@@ -65,17 +65,18 @@ export const experience = [
         title: 'Prevention Navigator, Project ACCESS',
         tag: 'Current',
         meta: [
-          'Research Foundation for SUNY · Department of Educational & Counseling Psychology, School of Education, University at Albany',
+          'Research Foundation for SUNY · Center for Behavioral Health Promotion and Applied Research (CBHPAR), School of Education, University at Albany',
           'August 2026 – Present · Part-time · Albany, NY',
         ],
         lede:
-          "Project ACCESS is a SAMHSA-funded research and service program that supports college students' well-being through non-judgmental, peer-based conversations and connects them with campus and community resources.",
+          "Project ACCESS (Achieving College Completion through Engaged Support Services) is a SAMHSA-funded initiative of UAlbany's Center for Behavioral Health Promotion and Applied Research, which develops and evaluates evidence-based programs for the health and well-being of adolescents, emerging adults, and college students. The project works to improve students' health, well-being, and academic success by making prevention, support, and care easier to reach.",
         bullets: [
-          'Conduct one-on-one well-being appointments and check-ins with undergraduate and graduate students, using Motivational Interviewing (MI) skills within the SBIRT (Screening, Brief Intervention, and Referral to Treatment) framework.',
-          'Hold non-judgmental conversations across areas of student well-being, including mental health, sexual health, alcohol, cannabis and other substance use, nicotine, and gambling, to reduce stigma and encourage help-seeking.',
-          "Connect students with on-campus and off-campus resources and referrals suited to each student's needs and circumstances.",
-          'Facilitate workshops, groups, and outreach events that promote well-being across campus.',
-          'Maintain documentation and case notes under the guidance of counselors, supporting both service delivery and program research.',
+          'Trained in C.A.R.E.S. (Community Awareness in Resource Engagement & Suicide Prevention) for recognizing signs of distress and suicide risk and connecting students to appropriate campus and community resources.',
+          'Provide one-on-one well-being appointments to all undergraduate and graduate students, using Motivational Interviewing (MI) within the SBIRT (Screening, Brief Intervention, and Referral to Treatment) framework.',
+          "In an appointment, have non-judgmental peer-to-peer conversations about mental health, sexual health, alcohol and cannabis use, other substance use, nicotine and gambling, and other aspects of students' health and well-being.",
+          "Connect students with on-campus and off-campus resources, such as counseling, health services, and community agencies, based on each student's needs and circumstances.",
+          'Facilitate workshops, tabling, and outreach events across the UAlbany campus.',
+          'Maintain documentation to support program evaluation and research.',
         ],
       },
       {
@@ -191,7 +192,6 @@ export const skills = [
         title: 'Trainings and certifications',
         style: 'list',
         items: [
-          'C.A.R.E.S. Suicide Prevention Training',
           'CITI Program, Human Subjects Research',
           'Motivational Interviewing (MI)',
           'SBIRT Protocol',
