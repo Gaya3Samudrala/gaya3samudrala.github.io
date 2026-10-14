@@ -1,0 +1,28 @@
+import PageHeader from '../components/PageHeader.jsx';
+import { skills } from '../data/content.js';
+
+export default function Skills() {
+  return (
+    <>
+      <PageHeader path="/skills" />
+      <section className="section">
+        <div className="container">
+          <div className="skills-grid">
+            {skills.map((block) => (
+              <div className="skill-block" key={block.groups[0].title}>
+                {block.groups.map(({ title, style, items }) => (
+                  <div className="skill-group" key={title}>
+                    <h2>{title}</h2>
+                    <ul className={style === 'chips' ? 'chips chips-sm' : 'skill-list'}>
+                      {items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

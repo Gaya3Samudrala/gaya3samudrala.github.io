@@ -5,9 +5,16 @@ export const profile = {
   name: 'Gayathri Gupta Samudrala',
   shortName: 'Gayathri G. S.',
   initials: 'GS',
-  // To add a photo: save it as public/images/profile.jpg, then set
-  // photo: 'images/profile.jpg'
-  photo: null,
+  // The full-screen character on the home page. `wide` is used on computers,
+  // `tall` on phones. Later, `video` can point to the animated version
+  // (e.g. 'images/about.webm'); the images stay as the still fallback.
+  aboutArt: {
+    wide: 'images/about-wide.jpg',
+    tall: 'images/about-tall.jpg',
+    video: null,
+  },
+  // The short line under "About Gayathri" on the home page.
+  intro: 'MS Educational Psychology & Methodology student at the University at Albany, on the path to Counseling Psychology.',
   tagline: [
     'MS Educational Psychology & Methodology, University at Albany, SUNY',
     'On the path to Counseling Psychology',
@@ -234,10 +241,37 @@ export const skills = [
   },
 ];
 
-export const navLinks = [
-  { id: 'about', label: 'About' },
-  { id: 'research', label: 'Research' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'contact', label: 'Contact' },
+// Pages of the site. `path` is the URL; `intro` is the short line under each page's title.
+export const pages = [
+  { path: '/', label: 'About' },
+  {
+    path: '/research',
+    label: 'Research',
+    title: 'Research',
+    intro: 'My research interests, fellowship, and independent study.',
+  },
+  {
+    path: '/experience',
+    label: 'Experience',
+    title: 'Experience',
+    intro: 'Work, clinical internships, and leadership, from speech therapy with children to supporting college students\' well-being.',
+  },
+  {
+    path: '/education',
+    label: 'Education',
+    title: 'Education',
+    intro: 'My graduate and undergraduate studies in psychology.',
+  },
+  {
+    path: '/skills',
+    label: 'Skills',
+    title: 'Skills and certifications',
+    intro: 'Trainings, research and data tools, clinical and assessment skills, and languages.',
+  },
+  {
+    path: '/contact',
+    label: 'Contact',
+    title: "Let's connect",
+    intro: "I'm happy to talk about research, graduate study, or collaboration.",
+  },
 ];

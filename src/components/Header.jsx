@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { navLinks, profile } from '../data/content.js';
+import { Link, NavLink } from 'react-router-dom';
+import { pages, profile } from '../data/content.js';
 
 const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -12,27 +13,12 @@ function currentTheme() {
 export default function Header() {
   const [theme, setTheme] = useState(currentTheme);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState('');
 
   // Follow the device setting until the visitor picks a theme.
   useEffect(() => {
     const onChange = () => setTheme(currentTheme());
     darkQuery.addEventListener('change', onChange);
     return () => darkQuery.removeEventListener('change', onChange);
-  }, []);
-
-  // Highlight the nav link for the section in view.
-  useEffect(() => {
-    if (!('IntersectionObserver' in window)) return;
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
-      { rootMargin: '-40% 0px -55% 0px' }
-    );
-    navLinks.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
   }, []);
 
   function toggleTheme() {
@@ -42,13 +28,15 @@ export default function Header() {
     setTheme(next);
   }
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="site-header">
       <nav className="nav container" aria-label="Main">
-        <a className="brand" href="#top">
+        <Link className="brand" to="/" onClick={closeMenu}>
           <span className="brand-mark" aria-hidden="true">ψ</span>
           <span className="brand-name">{profile.shortName}</span>
-        </a>
+        </Link>
         <button
           className="menu-toggle"
           aria-expanded={menuOpen}
@@ -59,11 +47,9 @@ export default function Header() {
           <span></span><span></span><span></span>
         </button>
         <ul className={`nav-links${menuOpen ? ' open' : ''}`} id="nav-links">
-          {navLinks.map(({ id, label }) => (
-            <li key={id}>
-              <a href={`#${id}`} className={active === id ? 'active' : ''} onClick={() => setMenuOpen(false)}>
-                {label}
-              </a>
+          {pages.map(({ path, label }) => (
+            <li key={path}>
+              <NavLink to={path} end onClick={closeMenu}>{label}</NavLink>
             </li>
           ))}
         </ul>

@@ -1,28 +1,27 @@
-import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import About from './components/About.jsx';
-import Research from './components/Research.jsx';
-import Experience from './components/Experience.jsx';
-import Education from './components/Education.jsx';
-import Skills from './components/Skills.jsx';
-import Contact from './components/Contact.jsx';
-import Footer from './components/Footer.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout.jsx';
+import Home from './pages/Home.jsx';
+import Research from './pages/Research.jsx';
+import Experience from './pages/Experience.jsx';
+import Education from './pages/Education.jsx';
+import Skills from './pages/Skills.jsx';
+import Contact from './pages/Contact.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 export default function App() {
   return (
-    <>
-      <a className="skip-link" href="#main">Skip to content</a>
-      <Header />
-      <main id="main">
-        <Hero />
-        <About />
-        <Research />
-        <Experience />
-        <Education />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="research" element={<Research />} />
+          <Route path="experience" element={<Experience />} />
+          <Route path="education" element={<Education />} />
+          <Route path="skills" element={<Skills />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
