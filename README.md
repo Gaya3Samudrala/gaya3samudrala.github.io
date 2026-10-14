@@ -16,7 +16,8 @@ builds the site and publishes it to GitHub Pages
 ## Common edits
 
 - **Change the home page character:** replace `public/images/about-wide.jpg` (16:9, for computers)
-  and `public/images/about-tall.jpg` (4:5, for phones). For an animated version, save the video in
+  and `public/images/about-tall.jpg` (4:5, for phones), plus the `-dark` versions used in dark mode.
+  If the new images have a different background color, update `--bg` at the top of `src/styles.css` to match. For an animated version, save the video in
   `public/images/` and set `aboutArt.video` in `src/data/content.js`.
 - **Edit the About text:** change `about.paragraphs` in `src/data/content.js`.
 - **Change a page's intro line:** edit `pages` at the bottom of `src/data/content.js`.
