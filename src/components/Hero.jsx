@@ -18,7 +18,6 @@ export default function Hero() {
       {video && !reduceMotion && (
         <video className="about-hero-media" src={src(video)} autoPlay muted loop playsInline aria-hidden="true" />
       )}
-      <div className="about-hero-shade" aria-hidden="true"></div>
       <div className="about-hero-text container">
         <h1>About {firstName}</h1>
         <p>{profile.intro}</p>
