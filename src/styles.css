@@ -132,7 +132,7 @@ a:focus-visible, button:focus-visible {
   display: grid; place-items: center;
   font-family: "Cormorant Garamond", serif; font-size: 22px; line-height: 1;
 }
-.brand-name { font-weight: 600; font-size: 15px; }
+.brand-name { font-weight: 600; font-size: 15px; white-space: nowrap; }
 
 .nav-links { list-style: none; display: flex; gap: 6px; margin: 0; padding: 0; }
 .nav-links a {
@@ -153,7 +153,8 @@ a:focus-visible, button:focus-visible {
 .menu-toggle { display: none; gap: 4px; align-content: center; }
 .menu-toggle span { display: block; width: 16px; height: 2px; background: currentColor; border-radius: 2px; }
 
-@media (max-width: 760px) {
+/* Switch to the menu button before six links get crowded */
+@media (max-width: 900px) {
   .menu-toggle { display: grid; order: 3; }
   .theme-toggle { order: 2; }
   .nav-links {
