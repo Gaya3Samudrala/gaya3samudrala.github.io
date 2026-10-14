@@ -15,8 +15,9 @@ builds the site and publishes it to GitHub Pages
 
 ## Common edits
 
-- **Add your photo:** save it as `public/images/profile.jpg` (square works best), then in
-  `src/data/content.js` change `photo: null` to `photo: 'images/profile.jpg'`.
+- **Change the home page character:** replace `public/images/about-wide.jpg` (16:9, for computers)
+  and `public/images/about-tall.jpg` (4:5, for phones). For an animated version, save the video in
+  `public/images/` and set `aboutArt.video` in `src/data/content.js`.
 - **Edit the About text:** change `about.paragraphs` in `src/data/content.js`.
 - **Change a page's intro line:** edit `pages` at the bottom of `src/data/content.js`.
 - **Add a job or project:** copy an existing entry in `experience` or `research.projects`
