@@ -1,13 +1,8 @@
-import PageHeader from '../components/PageHeader.jsx';
 import { education } from '../data/content.js';
 
 export default function Education() {
   return (
-    <>
-      <PageHeader path="/education" />
-      <section className="section">
-        <div className="container">
-          <div className="cards">
+    <div className="cards">
             {education.map(({ degree, meta, detail }) => (
               <article className="card" key={degree}>
                 <h2>{degree}</h2>
@@ -15,9 +10,6 @@ export default function Education() {
                 <p>{detail}</p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }

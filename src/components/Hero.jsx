@@ -49,10 +49,6 @@ export default function Hero() {
       <div className="about-hero-text container">
         <h1>About {firstName}</h1>
         <p>{profile.intro}</p>
-        <a className="scroll-cue" href="#about">
-          Scroll
-          <span aria-hidden="true"></span>
-        </a>
       </div>
     </section>
   );

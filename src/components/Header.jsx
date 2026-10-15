@@ -1,34 +1,15 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { pages, profile } from '../data/content.js';
+import { Link } from 'react-router-dom';
+import { profile } from '../data/content.js';
 
+// Top bar with just the name; sections are opened from the stickers around the character.
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <header className="site-header">
-      <nav className="nav container" aria-label="Main">
-        <Link className="brand" to="/" onClick={closeMenu}>
+      <nav className="nav container" aria-label="Home">
+        <Link className="brand" to="/">
           <span className="brand-mark" aria-hidden="true">ψ</span>
           <span className="brand-name">{profile.shortName}</span>
         </Link>
-        <button
-          className="menu-toggle"
-          aria-expanded={menuOpen}
-          aria-controls="nav-links"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          onClick={() => setMenuOpen((o) => !o)}
-        >
-          <span></span><span></span><span></span>
-        </button>
-        <ul className={`nav-links${menuOpen ? ' open' : ''}`} id="nav-links">
-          {pages.map(({ path, label }) => (
-            <li key={path}>
-              <NavLink to={path} end onClick={closeMenu}>{label}</NavLink>
-            </li>
-          ))}
-        </ul>
       </nav>
     </header>
   );

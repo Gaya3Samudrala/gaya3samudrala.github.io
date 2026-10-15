@@ -1,4 +1,3 @@
-import PageHeader from '../components/PageHeader.jsx';
 import { profile } from '../data/content.js';
 
 const icons = {
@@ -17,11 +16,7 @@ function Icon({ name }) {
 
 export default function Contact() {
   return (
-    <>
-      <PageHeader path="/contact" />
-      <section className="section">
-        <div className="container">
-          <div className="contact-grid">
+    <div className="contact-grid">
             <a className="contact-card" href={`mailto:${profile.email}`}>
               <Icon name="mail" />
               <h2>Email</h2>
@@ -43,9 +38,6 @@ export default function Contact() {
               <p className="contact-value">{profile.location}</p>
               <span className="contact-note">University at Albany, SUNY</span>
             </div>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }

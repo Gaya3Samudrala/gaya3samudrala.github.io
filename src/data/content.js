@@ -244,36 +244,49 @@ export const skills = [
   },
 ];
 
-// Pages of the site. `path` is the URL; `intro` is the short line under each page's title.
+// Sections of the site. Each opens as a glass panel over the home screen.
+// `path` is its web address, `icon` the image in the icon menu (replace the files in
+// public/icons/ with your own, keeping the same names), `intro` the line under its title.
 export const pages = [
-  { path: '/', label: 'About' },
+  {
+    path: '/about',
+    label: 'About',
+    icon: 'icons/about.svg',
+    title: 'About me',
+    intro: 'A little about who I am and where I am headed.',
+  },
   {
     path: '/research',
     label: 'Research',
+    icon: 'icons/research.svg',
     title: 'Research',
     intro: 'My research interests, fellowship, and independent study.',
   },
   {
     path: '/experience',
     label: 'Experience',
+    icon: 'icons/experience.svg',
     title: 'Experience',
     intro: 'Work, clinical internships, and leadership, from speech therapy with children to supporting college students\' well-being.',
   },
   {
     path: '/education',
     label: 'Education',
+    icon: 'icons/education.svg',
     title: 'Education',
     intro: 'My graduate and undergraduate studies in psychology.',
   },
   {
     path: '/skills',
     label: 'Skills',
+    icon: 'icons/skills.svg',
     title: 'Skills and certifications',
     intro: 'Trainings, research and data tools, clinical and assessment skills, and languages.',
   },
   {
     path: '/contact',
     label: 'Contact',
+    icon: 'icons/contact.svg',
     title: "Let's connect",
     intro: "I'm happy to talk about research, graduate study, or collaboration.",
   },

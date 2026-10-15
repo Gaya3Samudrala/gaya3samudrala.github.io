@@ -1,13 +1,8 @@
-import PageHeader from '../components/PageHeader.jsx';
 import { skills } from '../data/content.js';
 
 export default function Skills() {
   return (
-    <>
-      <PageHeader path="/skills" />
-      <section className="section">
-        <div className="container">
-          <div className="skills-grid">
+    <div className="skills-grid">
             {skills.map((block) => (
               <div className="skill-block" key={block.groups[0].title}>
                 {block.groups.map(({ title, style, items }) => (
@@ -20,9 +15,6 @@ export default function Skills() {
                 ))}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }

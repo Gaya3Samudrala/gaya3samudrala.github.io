@@ -1,12 +1,8 @@
-import PageHeader from '../components/PageHeader.jsx';
 import { research } from '../data/content.js';
 
 export default function Research() {
   return (
     <>
-      <PageHeader path="/research" />
-      <section className="section">
-        <div className="container">
           <div className="interests">
             <h2>Research interests</h2>
             <p>{research.interests}</p>
@@ -29,8 +25,6 @@ export default function Research() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
     </>
   );
 }

@@ -1,4 +1,3 @@
-import PageHeader from '../components/PageHeader.jsx';
 import { experience } from '../data/content.js';
 
 const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -6,17 +5,22 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 export default function Experience() {
   return (
     <>
-      <PageHeader path="/experience">
-        <ul className="jump-links" aria-label="Jump to">
+      <ul className="jump-links" aria-label="Jump to">
           {experience.map(({ group, entries }) => (
             <li key={group}>
-              <a href={`#${slug(group)}`}>{group} <span>{entries.length}</span></a>
+              <a
+                href={`#${slug(group)}`}
+                onClick={(e) => {
+                  // scroll the panel itself to the group (the page around it doesn't scroll)
+                  e.preventDefault();
+                  document.getElementById(slug(group))?.scrollIntoView({ block: 'start' });
+                }}
+              >
+                {group} <span>{entries.length}</span>
+              </a>
             </li>
           ))}
-        </ul>
-      </PageHeader>
-      <section className="section">
-        <div className="container">
+      </ul>
           {experience.map(({ group, entries }) => (
             <div className="exp-group" id={slug(group)} key={group}>
               <h2 className="group-title">{group}</h2>
@@ -41,8 +45,6 @@ export default function Experience() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
     </>
   );
 }
