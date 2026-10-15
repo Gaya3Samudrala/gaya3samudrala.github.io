@@ -6,19 +6,14 @@ export const profile = {
   shortName: 'Gayathri G. S.',
   initials: 'GS',
   // The full-screen character on the home page. `wide` is used on computers,
-  // `tall` on phones, and the `Dark` versions in dark mode. `videos` holds the
-  // animated versions (leave one as null to show the still image instead);
-  // the still images are also shown while a video loads.
+  // `tall` on phones. `videos` holds the animated versions (leave one as null to
+  // show the still image instead); the still images also show while a video loads.
   aboutArt: {
     wide: 'images/about-wide.jpg',
     tall: 'images/about-tall.jpg',
-    wideDark: 'images/about-wide-dark.jpg',
-    tallDark: 'images/about-tall-dark.jpg',
     videos: {
       wide: 'images/about-wide.mp4',
       tall: 'images/about-tall.mp4',
-      wideDark: null,
-      tallDark: null,
     },
   },
   // The short line under "About Gayathri" on the home page.

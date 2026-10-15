@@ -10,13 +10,13 @@ builds the site and publishes it to GitHub Pages
 - `src/pages/`: one file per page: Home (About), Research, Experience, Skills
 - `src/components/`: shared pieces, such as the header, the page banners, and the Contact section at the bottom of every page
 - `scripts/static-pages.js`: creates a real page for each URL (such as `/research`) when the site is built
-- `src/styles.css`: colors, fonts, and layout. Light and dark theme colors are defined at the top.
+- `src/styles.css`: colors, fonts, and layout. Theme colors are defined at the top.
 - `public/images/`: images, such as your profile photo
 
 ## Common edits
 
 - **Change the home page character:** replace `public/images/about-wide.jpg` (16:9, for computers)
-  and `public/images/about-tall.jpg` (4:5, for phones), plus the `-dark` versions used in dark mode.
+  and `public/images/about-tall.jpg` (4:5, for phones).
   If the new images have a different background color, update `--bg` at the top of `src/styles.css` to match. For an animated version, save the video in
   `public/images/` and set `aboutArt.video` in `src/data/content.js`.
 - **Edit the About text:** change `about.paragraphs` in `src/data/content.js`.
