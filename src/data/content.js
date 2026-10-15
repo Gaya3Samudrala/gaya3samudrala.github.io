@@ -16,7 +16,7 @@ export const profile = {
     tallDark: 'images/about-tall-dark.jpg',
     videos: {
       wide: 'images/about-wide.mp4',
-      tall: null,
+      tall: 'images/about-tall.mp4',
       wideDark: null,
       tallDark: null,
     },
