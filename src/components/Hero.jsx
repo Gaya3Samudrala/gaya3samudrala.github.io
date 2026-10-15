@@ -15,17 +15,31 @@ function useMedia(query) {
   return matches;
 }
 
+// The current theme ('light' or 'dark'): the visitor's choice from the toggle,
+// otherwise their device setting.
+function useTheme() {
+  const prefersDark = useMedia('(prefers-color-scheme: dark)');
+  const read = () => document.documentElement.getAttribute('data-theme');
+  const [chosen, setChosen] = useState(read);
+  useEffect(() => {
+    const observer = new MutationObserver(() => setChosen(read()));
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
+  return chosen === 'light' || chosen === 'dark' ? chosen : prefersDark ? 'dark' : 'light';
+}
+
 // The character: wide on landscape screens, tall on portrait screens (phones).
 // Plays the matching video when there is one, with the still image as its poster.
-// Light and dark versions are both rendered; CSS shows the one matching the theme,
-// and lazy loading keeps the hidden one from downloading.
-function Art({ wide, tall, wideVideo, tallVideo, className, alt }) {
+// Light and dark versions are both rendered; CSS shows the one matching the theme.
+function Art({ wide, tall, wideVideo, tallVideo, className, alt, active }) {
   const landscape = useMedia('(min-aspect-ratio: 1/1)');
   const reduceMotion = useMedia('(prefers-reduced-motion: reduce)');
   const video = landscape ? wideVideo : tallVideo;
   const still = landscape ? wide : tall;
 
-  if (video && !reduceMotion) {
+  // Only the version for the current theme plays, so the hidden one never downloads.
+  if (video && active && !reduceMotion) {
     return (
       <div className={className}>
         <video
@@ -55,13 +69,14 @@ function Art({ wide, tall, wideVideo, tallVideo, className, alt }) {
 // Full-screen character with "About Gayathri" over it.
 export default function Hero() {
   const { wide, tall, wideDark, tallDark, videos } = profile.aboutArt;
+  const theme = useTheme();
   const firstName = profile.name.split(' ')[0];
   const alt = `3D illustration of ${firstName}, smiling`;
 
   return (
     <section className="about-hero" id="top">
-      <Art className="art-light" wide={wide} tall={tall} wideVideo={videos.wide} tallVideo={videos.tall} alt={alt} />
-      <Art className="art-dark" wide={wideDark} tall={tallDark} wideVideo={videos.wideDark} tallVideo={videos.tallDark} alt={alt} />
+      <Art className="art-light" wide={wide} tall={tall} wideVideo={videos.wide} tallVideo={videos.tall} alt={alt} active={theme === 'light'} />
+      <Art className="art-dark" wide={wideDark} tall={tallDark} wideVideo={videos.wideDark} tallVideo={videos.tallDark} alt={alt} active={theme === 'dark'} />
       <div className="about-hero-text container">
         <h1>About {firstName}</h1>
         <p>{profile.intro}</p>
