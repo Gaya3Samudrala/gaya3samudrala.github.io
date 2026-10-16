@@ -202,7 +202,7 @@ export const milestones = [
   {
     path: '/ualbany',
     label: 'University at Albany',
-    sticker: 'stickers/ualbany.png',
+    sticker: 'stickers/ualbany-damien.png',
     ratio: 299 / 500,
     title: 'University at Albany',
     intro: 'Where I am doing my master\'s, in Albany, New York.',

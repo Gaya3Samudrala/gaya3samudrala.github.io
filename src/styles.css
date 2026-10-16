@@ -133,7 +133,7 @@ a:focus-visible, button:focus-visible {
 }
 @keyframes sticker-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 .sticker img {
-  width: var(--w); height: var(--h); display: block;
+  width: var(--w); height: var(--h); object-fit: contain; display: block;
   /* the stickers have their own white die-cut border; just add a soft shadow */
   filter: drop-shadow(0 6px 8px rgba(40, 25, 35, 0.35));
   transition: transform .3s ease;
