@@ -61,7 +61,7 @@ export default function Stickers() {
     // right-hand stickers must also fit before the panel.
     const shift = open ? 0.22 * w : 0;
     const panelLeft = open ? w - 24 - Math.min(620, 0.52 * w) : w;
-    const half = Math.max(fullSize + 18, 118) / 2;                   // half a tilted sticker incl. its border and label
+    const half = (fullSize + 24) / 2;                                // half a tilted sticker incl. its white border
     const toX = (p) => stageLeft + (p / 100) * stageW - shift;
     const toY = (p) => stageTop + (p / 100) * stageH;
     const edges = OUTLINE.map(([l, r]) => [toX(l), toX(r)]);
@@ -95,7 +95,8 @@ export default function Stickers() {
             key={path}
             to={path}
             end
-            className="sticker"
+            className={`sticker${icon.startsWith('stickers/') ? ' sticker-diecut' : ''}`}
+            aria-label={label}
             style={{ left: x, top: y, '--tilt': `${tilt}deg`, '--size': `${size}px`, '--delay': `${-i * 0.9}s` }}
             onClick={(e) => {
               if (pathname === path) { e.preventDefault(); navigate('/'); }
@@ -103,7 +104,6 @@ export default function Stickers() {
           >
             <span className="sticker-float">
               <img src={src(icon)} alt="" aria-hidden="true" />
-              <span className="sticker-label">{label}</span>
             </span>
           </NavLink>
         );

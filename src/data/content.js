@@ -272,7 +272,7 @@ export const pages = [
   {
     path: '/education',
     label: 'Education',
-    icon: 'icons/education.svg',
+    icon: 'stickers/ualbany.png',
     title: 'Education',
     intro: 'My graduate and undergraduate studies in psychology.',
   },

@@ -140,23 +140,22 @@ a:focus-visible, button:focus-visible {
     drop-shadow(0 6px 8px rgba(40, 25, 35, 0.35));
   transition: transform .3s ease;
 }
-.sticker-label {
-  margin-top: -4px; padding: 2px 10px; border-radius: 999px;
-  background: #fff; color: var(--text);
-  font-size: 12px; font-weight: 800; letter-spacing: .01em; white-space: nowrap;
-  box-shadow: 0 3px 8px rgba(40, 25, 35, 0.25);
-}
 .sticker:hover, .sticker:focus-visible { transform: translate(-50%, -50%) rotate(0deg) scale(1.1); }
 .sticker:hover img { transform: translateY(-2px); }
 .sticker.active { transform: translate(-50%, -50%) rotate(0deg) scale(1.14); }
-.sticker.active .sticker-label { background: var(--lav-mid); color: var(--lav-deep); }
 .sticker:focus-visible { outline: none; }
-.sticker:focus-visible .sticker-label { outline: 2px solid var(--lav-strong); outline-offset: 2px; }
+.sticker:focus-visible .sticker-float { outline: 2px solid var(--lav-strong); outline-offset: 6px; border-radius: 12px; }
+/* stickers made in Gemini already have their own white die-cut border: only add the shadow,
+   and draw them a bit bigger since they're tall and narrow */
+.sticker.sticker-diecut img {
+  width: calc(var(--size) * 1.35); height: calc(var(--size) * 1.35);
+  filter: drop-shadow(0 6px 8px rgba(40, 25, 35, 0.35));
+}
 @media (max-aspect-ratio: 1/1) {
-  .sticker-label { font-size: 10px; padding: 1px 7px; }
   .sticker img { filter:
     drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
     drop-shadow(0 4px 6px rgba(40, 25, 35, 0.35)); }
+  .sticker.sticker-diecut img { filter: drop-shadow(0 4px 6px rgba(40, 25, 35, 0.35)); }
 }
 
 /* ---------- Section panel (frosted glass) ---------- */
