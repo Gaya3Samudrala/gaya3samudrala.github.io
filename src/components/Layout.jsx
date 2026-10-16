@@ -4,7 +4,7 @@ import Header from './Header.jsx';
 import Hero from './Hero.jsx';
 import Stickers from './Stickers.jsx';
 import Panel from './Panel.jsx';
-import { pages, profile } from '../data/content.js';
+import { milestones, pages, profile } from '../data/content.js';
 
 // The whole site is one screen: the character animation fills it, section stickers
 // sit around her, and each section opens in a glass panel over the animation.
@@ -13,7 +13,7 @@ export default function Layout() {
   const open = pathname !== '/';
 
   useEffect(() => {
-    const page = pages.find((p) => p.path === pathname);
+    const page = [...pages, ...milestones].find((p) => p.path === pathname);
     document.title = page ? `${page.title} · ${profile.name}` : profile.name;
   }, [pathname]);
 

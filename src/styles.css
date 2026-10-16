@@ -120,7 +120,7 @@ a:focus-visible, button:focus-visible {
   .about-hero-media { object-position: center 15%; }
 }
 
-/* ---------- Section stickers around the character ---------- */
+/* ---------- Milestone stickers around the character ---------- */
 .sticker {
   position: absolute; z-index: 25;
   transform: translate(-50%, -50%) rotate(var(--tilt));
@@ -133,11 +133,9 @@ a:focus-visible, button:focus-visible {
 }
 @keyframes sticker-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 .sticker img {
-  width: var(--size); height: var(--size); object-fit: contain; display: block;
-  /* die-cut white border + soft shadow, so any icon looks like a sticker */
-  filter:
-    drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff)
-    drop-shadow(0 6px 8px rgba(40, 25, 35, 0.35));
+  width: var(--w); height: var(--h); display: block;
+  /* the stickers have their own white die-cut border; just add a soft shadow */
+  filter: drop-shadow(0 6px 8px rgba(40, 25, 35, 0.35));
   transition: transform .3s ease;
 }
 .sticker:hover, .sticker:focus-visible { transform: translate(-50%, -50%) rotate(0deg) scale(1.1); }
@@ -145,17 +143,8 @@ a:focus-visible, button:focus-visible {
 .sticker.active { transform: translate(-50%, -50%) rotate(0deg) scale(1.14); }
 .sticker:focus-visible { outline: none; }
 .sticker:focus-visible .sticker-float { outline: 2px solid var(--lav-strong); outline-offset: 6px; border-radius: 12px; }
-/* stickers made in Gemini already have their own white die-cut border: only add the shadow,
-   and draw them a bit bigger since they're tall and narrow */
-.sticker.sticker-diecut img {
-  width: calc(var(--size) * 1.35); height: calc(var(--size) * 1.35);
-  filter: drop-shadow(0 6px 8px rgba(40, 25, 35, 0.35));
-}
 @media (max-aspect-ratio: 1/1) {
-  .sticker img { filter:
-    drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
-    drop-shadow(0 4px 6px rgba(40, 25, 35, 0.35)); }
-  .sticker.sticker-diecut img { filter: drop-shadow(0 4px 6px rgba(40, 25, 35, 0.35)); }
+  .sticker img { filter: drop-shadow(0 4px 6px rgba(40, 25, 35, 0.35)); }
 }
 
 /* ---------- Section panel (frosted glass) ---------- */

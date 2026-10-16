@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { pages } from '../data/content.js';
+import { milestones } from '../data/content.js';
 
 const src = (file) => import.meta.env.BASE_URL + file;
 
-// Where each sticker sits, in the same order as `pages` in content.js: [x %, y %, tilt in degrees].
+// Where each sticker sits, in the same order as `milestones` in content.js: [x %, y %, tilt in degrees].
 // Her outline in the computer video, as % of the frame width: the widest left and right
 // edges (over the whole animation) beside each row of stickers. Measured from the video.
 const OUTLINE = [[35.9, 57.6], [34.6, 58.8], [34.4, 65.7]];
@@ -33,8 +33,12 @@ function useWindowSize() {
   return size;
 }
 
-// Clickable stickers around the character, one per section. Clicking a sticker opens
-// its section; clicking the open section's sticker again closes it.
+// A sticker's width and height: stickers come in different shapes, so each gets about
+// the same area (that of a `size` × `size` square) whatever its shape.
+const dims = (size, ratio) => [size * Math.sqrt(ratio), size / Math.sqrt(ratio)];
+
+// Clickable milestone stickers around the character. Clicking a sticker opens its
+// panel; clicking the open milestone's sticker again closes it.
 export default function Stickers() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -48,62 +52,67 @@ export default function Stickers() {
   const stageLeft = (w - stageW) / 2, stageTop = (h - stageH) * 0.3;
 
   // Sticker size scales with the window.
-  const fullSize = wide ? Math.round(Math.min(100, Math.max(64, h * 0.11))) : 58;
+  const fullSize = wide ? Math.round(Math.min(105, Math.max(68, h * 0.12))) : 62;
   const toScreen = ([px, py, tilt]) => [(px / 100) * w, (py / 100) * h, tilt];
   let positions, size = fullSize;
 
   if (!wide) {
     positions = (open ? LAYOUTS.tallOpen : LAYOUTS.tall).map(toScreen);
-    if (open) size = 46;
+    if (open) size = 48;
   } else {
     // Stickers sit an equal gap from her outline on both sides, row by row. With a panel
     // open she slides left by 22% of the window (see .panel-open in styles.css) and the
     // right-hand stickers must also fit before the panel.
     const shift = open ? 0.22 * w : 0;
     const panelLeft = open ? w - 24 - Math.min(620, 0.52 * w) : w;
-    const half = (fullSize + 24) / 2;                                // half a tilted sticker incl. its white border
     const toX = (p) => stageLeft + (p / 100) * stageW - shift;
     const toY = (p) => stageTop + (p / 100) * stageH;
     const edges = OUTLINE.map(([l, r]) => [toX(l), toX(r)]);
-    // the largest equal gap each row allows: screen edge on the left, panel (or screen edge) on the right
-    const room = edges.map(([l, r]) => Math.min(l - 2 * half - 20, panelLeft - 16 - r - 2 * half));
-    const gap = Math.min(0.035 * stageW, room[0], room[1]);
-    const lowFits = room[2] >= gap;                                  // shoulder-height row on the right
+    const widths = milestones.map(({ ratio }) => dims(fullSize, ratio)[0] + 16); // incl. tilt and shadow
+    // the largest equal gap each sticker allows: screen edge on the left, panel (or screen edge) on the right
+    const room = (i) => {
+      const [l, r] = edges[Math.floor(i / 2) % 3];
+      return i % 2 === 0 ? l - widths[i] - 20 : panelLeft - 16 - r - widths[i];
+    };
+    const lowRight = 5;                                              // shoulder-height row on the right
+    const gap = Math.min(0.035 * stageW, ...milestones.map((_, i) => (i === lowRight ? Infinity : room(i))));
+    const lowFits = milestones.length <= lowRight || room(lowRight) >= gap;
 
     if (gap >= 8) {
-      positions = LAYOUTS.wide.map(([, py, tilt], i) => {
-        const row = Math.floor(i / 2);
-        const [l, r] = edges[row];
-        const y = toY(py);
+      positions = milestones.map((_, i) => {
+        const [, py, tilt] = LAYOUTS.wide[i % LAYOUTS.wide.length];
+        const [l, r] = edges[Math.floor(i / 2) % 3];
+        const half = widths[i] / 2, y = toY(py);
         if (i % 2 === 0) return [l - gap - half, y, tilt];            // left-hand stickers
-        if (row < 2 || lowFits) return [r + gap + half, y, tilt];    // right-hand stickers
+        if (i !== lowRight || lowFits) return [r + gap + half, y, tilt]; // right-hand stickers
         // no room beside her shoulder: join the left-hand stickers, just below them
-        return [Math.max(toX(OUTLINE_BELOW) - gap - half, half + 20), Math.min(toY(77), h - half - 24), tilt];
+        return [Math.max(toX(OUTLINE_BELOW) - gap - half, half + 20), Math.min(toY(77), h - 80), tilt];
       });
     } else {
       positions = LAYOUTS.wideOpen.map(toScreen);
-      size = Math.round(Math.min(80, h * 0.075));                   // smaller so six fit in one column
+      size = Math.round(Math.min(80, h * 0.075));                   // smaller so they fit in one column
     }
   }
 
   return (
-    <nav className="stickers" aria-label="Sections">
-      {pages.map(({ path, label, icon }, i) => {
+    <nav className="stickers" aria-label="Milestones">
+      {milestones.map(({ path, label, sticker, ratio }, i) => {
         const [x, y, tilt] = positions[i % positions.length];
+        const [sw, sh] = dims(size, ratio);
         return (
           <NavLink
             key={path}
             to={path}
             end
-            className={`sticker${icon.startsWith('stickers/') ? ' sticker-diecut' : ''}`}
+            className="sticker"
             aria-label={label}
-            style={{ left: x, top: y, '--tilt': `${tilt}deg`, '--size': `${size}px`, '--delay': `${-i * 0.9}s` }}
+            style={{ left: x, top: y, '--tilt': `${tilt}deg`, '--w': `${sw}px`, '--h': `${sh}px`, '--delay': `${-i * 0.9}s` }}
             onClick={(e) => {
               if (pathname === path) { e.preventDefault(); navigate('/'); }
             }}
           >
             <span className="sticker-float">
-              <img src={src(icon)} alt="" aria-hidden="true" />
+              <img src={src(sticker)} alt="" aria-hidden="true" />
             </span>
           </NavLink>
         );

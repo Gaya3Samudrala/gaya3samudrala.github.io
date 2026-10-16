@@ -189,8 +189,33 @@ export const education = [
   },
   {
     degree: 'Bachelor of Arts, Economics, Public Administration, and Psychology',
-    meta: 'Osmania University, Hyderabad, India · 2019 – 2022',
+    meta: 'Osmania University, Hyderabad, India · July 2019 – September 2022',
     detail: 'Concentration in Psychology · GPA 3.61',
+  },
+];
+
+// Milestones: the stickers around the character. Clicking one opens its panel.
+// `sticker` is the image in public/stickers/ (cut out, with its own white border),
+// `ratio` its width ÷ height, so stickers of different shapes get a similar size.
+// `entries` are shown as cards in the panel.
+export const milestones = [
+  {
+    path: '/ualbany',
+    label: 'University at Albany',
+    sticker: 'stickers/ualbany.png',
+    ratio: 299 / 500,
+    title: 'University at Albany',
+    intro: 'Where I am doing my master\'s, in Albany, New York.',
+    entries: [education[0]],
+  },
+  {
+    path: '/osmania',
+    label: 'Osmania University',
+    sticker: 'stickers/osmania.png',
+    ratio: 700 / 304,
+    title: 'Osmania University',
+    intro: 'Where I did my bachelor\'s, in Hyderabad, India.',
+    entries: [education[1]],
   },
 ];
 
@@ -245,48 +270,35 @@ export const skills = [
 ];
 
 // Sections of the site. Each opens as a glass panel over the home screen.
-// `path` is its web address, `icon` the image in the icon menu (replace the files in
-// public/icons/ with your own, keeping the same names), `intro` the line under its title.
+// `path` is its web address, `intro` the line under its title.
 export const pages = [
   {
     path: '/about',
-    label: 'About',
-    icon: 'icons/about.svg',
     title: 'About me',
     intro: 'A little about who I am and where I am headed.',
   },
   {
     path: '/research',
-    label: 'Research',
-    icon: 'icons/research.svg',
     title: 'Research',
     intro: 'My research interests, fellowship, and independent study.',
   },
   {
     path: '/experience',
-    label: 'Experience',
-    icon: 'icons/experience.svg',
     title: 'Experience',
     intro: 'Work, clinical internships, and leadership, from speech therapy with children to supporting college students\' well-being.',
   },
   {
     path: '/education',
-    label: 'Education',
-    icon: 'stickers/ualbany.png',
     title: 'Education',
     intro: 'My graduate and undergraduate studies in psychology.',
   },
   {
     path: '/skills',
-    label: 'Skills',
-    icon: 'icons/skills.svg',
     title: 'Skills and certifications',
     intro: 'Trainings, research and data tools, clinical and assessment skills, and languages.',
   },
   {
     path: '/contact',
-    label: 'Contact',
-    icon: 'icons/contact.svg',
     title: "Let's connect",
     intro: "I'm happy to talk about research, graduate study, or collaboration.",
   },

@@ -6,9 +6,11 @@ import Experience from './pages/Experience.jsx';
 import Education from './pages/Education.jsx';
 import Skills from './pages/Skills.jsx';
 import Contact from './pages/Contact.jsx';
+import Milestone from './pages/Milestone.jsx';
+import { milestones } from './data/content.js';
 
 // The home screen ("/") shows just the animation; every other address opens
-// that section's panel over it. Unknown addresses open a "not found" panel.
+// that section's or milestone's panel over it. Unknown addresses open a "not found" panel.
 export default function App() {
   return (
     <BrowserRouter>
@@ -21,6 +23,9 @@ export default function App() {
           <Route path="education" element={<Education />} />
           <Route path="skills" element={<Skills />} />
           <Route path="contact" element={<Contact />} />
+          {milestones.map(({ path }) => (
+            <Route key={path} path={path.slice(1)} element={<Milestone path={path} />} />
+          ))}
           <Route path="*" element={null} />
         </Route>
       </Routes>
