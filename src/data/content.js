@@ -197,7 +197,7 @@ export const education = [
 // Milestones: the stickers around the character. Clicking one opens its panel.
 // `sticker` is the image in public/stickers/ (cut out, with its own white border),
 // `ratio` its width ÷ height, so stickers of different shapes get a similar size.
-// `entries` are shown as cards in the panel.
+// `entries` (from `education` or `experience`) are shown as cards in the panel.
 export const milestones = [
   {
     path: '/ualbany',
@@ -216,6 +216,15 @@ export const milestones = [
     title: 'Osmania University',
     intro: 'Where I did my bachelor\'s, in Hyderabad, India.',
     entries: [education[1]],
+  },
+  {
+    path: '/project-access',
+    label: 'Project ACCESS',
+    sticker: 'stickers/project-access-vinyl.png',
+    ratio: 1,
+    title: 'Project ACCESS',
+    intro: 'My current role, supporting UAlbany students\' health and well-being.',
+    entries: [experience[0].entries[0]],
   },
 ];
 
