@@ -32,7 +32,7 @@ addresses, such as `/research`, but have no sticker for now.
   height, so stickers of different shapes get a similar size). Only the shadow is added by
   the site.
 - **Change the home page character:** replace `public/images/about-wide.jpg` / `.mp4`
-  (16:9, for computers) and `public/images/about-tall.jpg` / `.mp4` (for phones).
+  (16:9). Phones show the same video, cropped to the character.
 - **Edit the About text:** change `about.paragraphs` in `src/data/content.js`.
 - **Change a section's title or intro line:** edit `pages` at the bottom of `src/data/content.js`.
 - **Add a job or project:** copy an existing entry in `experience` or `research.projects`

@@ -15,25 +15,23 @@ function useMedia(query) {
   return matches;
 }
 
-// Full-screen character with "About Gayathri" over it: wide on landscape screens,
-// tall on portrait screens (phones). Plays the matching video when there is one,
+// Full-screen character with "About Gayathri" over it. Plays the video when there is one,
 // with the still image as its poster; visitors who reduce motion see the still.
+// Phones show the same video as computers, smaller (see styles.css), so the
+// background color matches everywhere.
 export default function Hero() {
-  const { wide, tall, videos } = profile.aboutArt;
-  const landscape = useMedia('(min-aspect-ratio: 1/1)');
+  const { wide, videos } = profile.aboutArt;
   const reduceMotion = useMedia('(prefers-reduced-motion: reduce)');
-  const video = landscape ? videos.wide : videos.tall;
   const firstName = profile.name.split(' ')[0];
   const alt = `3D illustration of ${firstName}, smiling`;
 
   return (
     <section className="about-hero" id="top">
-      {video && !reduceMotion ? (
+      {videos.wide && !reduceMotion ? (
         <video
-          key={video}
           className="about-hero-media"
-          src={src(video)}
-          poster={src(landscape ? wide : tall)}
+          src={src(videos.wide)}
+          poster={src(wide)}
           autoPlay
           muted
           loop
@@ -41,10 +39,7 @@ export default function Hero() {
           aria-label={alt}
         />
       ) : (
-        <picture>
-          <source srcSet={src(wide)} media="(min-aspect-ratio: 1/1)" />
-          <img className="about-hero-media" src={src(tall)} alt={alt} />
-        </picture>
+        <img className="about-hero-media" src={src(wide)} alt={alt} />
       )}
       <div className="about-hero-text container">
         <h1>About {firstName}</h1>

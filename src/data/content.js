@@ -10,10 +10,8 @@ export const profile = {
   // show the still image instead); the still images also show while a video loads.
   aboutArt: {
     wide: 'images/about-wide.jpg',
-    tall: 'images/about-tall.jpg',
     videos: {
       wide: 'images/about-wide.mp4',
-      tall: 'images/about-tall.mp4',
     },
   },
   // The short line under "About Gayathri" on the home page.
