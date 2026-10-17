@@ -226,6 +226,15 @@ export const milestones = [
     intro: 'My current role, supporting UAlbany students\' health and well-being.',
     entries: [experience[0].entries[0]],
   },
+  {
+    path: '/speech-therapy',
+    label: 'Speech therapy',
+    sticker: 'stickers/speech-blocks.png',
+    ratio: 700 / 402,
+    title: 'Speech therapy',
+    intro: 'Working with children at Ashoka Multispecialty Rehabilitation Center, Hyderabad.',
+    entries: [experience[0].entries.find((e) => e.title === 'Assistant Speech Therapist')],
+  },
 ];
 
 // Each block is a card; each group inside is shown as a list or as chips.
