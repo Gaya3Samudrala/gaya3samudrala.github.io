@@ -116,8 +116,9 @@ a:focus-visible, button:focus-visible {
   text-shadow: 0 1px 12px rgba(38, 33, 92, 0.5);
 }
 .panel-open .about-hero-text { opacity: 0; transform: translateY(20px); pointer-events: none; }
+/* phones: show the whole video, smaller, standing at the bottom of the screen */
 @media (max-aspect-ratio: 1/1) {
-  .about-hero-media { object-position: center 15%; }
+  .about-hero-media { object-fit: contain; object-position: center bottom; }
 }
 
 /* ---------- Milestone stickers around the character ---------- */
