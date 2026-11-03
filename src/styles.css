@@ -2,7 +2,6 @@
 :root {
   /* Page background: solid mauve matched to the character image (film grain added on html) */
   --bg: #9A767D;
-  --bg-phone: #A58185;   /* the character video's own background, for phones */
   /* Cards stay a warm cream so text is easy to read */
   --surface: #FBF7F6;
   --text: #1A1216;
@@ -95,13 +94,8 @@ a:focus-visible, button:focus-visible {
 }
 .brand-name { font-weight: 600; font-size: 15px; white-space: nowrap; }
 
-/* ---------- Home screen: the character ---------- */
+/* ---------- Home screen: title ---------- */
 .about-hero { position: absolute; inset: 0; }
-.about-hero-media {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center 30%;
-  transition: transform .7s cubic-bezier(.22, .8, .24, 1);
-}
 .about-hero-text {
   position: absolute; left: 0; right: 0; bottom: clamp(40px, 8vh, 80px);
   text-align: center; color: #FFFFFF;
@@ -117,16 +111,9 @@ a:focus-visible, button:focus-visible {
   text-shadow: 0 1px 12px rgba(38, 33, 92, 0.5);
 }
 .panel-open .about-hero-text { opacity: 0; transform: translateY(20px); pointer-events: none; }
-/* phones: the computer video, cropped to her and standing at the bottom of the screen.
-   Its top edge fades into a page color matched to the video's background. */
+/* phones: the title on one line */
 @media (max-aspect-ratio: 1/1) {
-  html { background: var(--bg-phone); }
-  .about-hero h1 { font-size: clamp(38px, 11.5vw, 64px); }   /* one line, so it stays below her face */
-  .about-hero-media {
-    top: auto; height: 72%; object-fit: cover; object-position: center;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 35%);
-    mask-image: linear-gradient(to bottom, transparent, #000 35%);
-  }
+  .about-hero h1 { font-size: clamp(38px, 11.5vw, 64px); }
 }
 
 /* ---------- Milestone stickers around the character ---------- */
@@ -169,14 +156,10 @@ a:focus-visible, button:focus-visible {
   animation: panel-in .5s cubic-bezier(.22, .8, .24, 1) both;
 }
 @keyframes panel-in { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
-@media (min-aspect-ratio: 1/1) {
-  .panel-open .about-hero-media { transform: translateX(-22%); }
-}
-/* tall screens (phones): panel rises from the bottom, face stays visible above it */
+/* tall screens (phones): panel rises from the bottom */
 @media (max-aspect-ratio: 1/1) {
   .panel { top: 46%; left: 10px; right: 10px; bottom: 12px; width: auto; border-radius: 22px; }
   @keyframes panel-in { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
-  .panel-open .about-hero-media { transform: translateY(-24%); }
 }
 .panel-head {
   display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;

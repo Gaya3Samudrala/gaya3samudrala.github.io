@@ -6,8 +6,8 @@ import Stickers from './Stickers.jsx';
 import Panel from './Panel.jsx';
 import { milestones, pages, profile } from '../data/content.js';
 
-// The whole site is one screen: the character animation fills it, section stickers
-// sit around her, and each section opens in a glass panel over the animation.
+// The whole site is one screen: milestone stickers sit around the title, and each
+// one opens in a glass panel over the home screen.
 export default function Layout() {
   const { pathname } = useLocation();
   const open = pathname !== '/';

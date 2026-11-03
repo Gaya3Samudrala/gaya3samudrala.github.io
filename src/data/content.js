@@ -5,15 +5,6 @@ export const profile = {
   name: 'Gayathri Gupta Samudrala',
   shortName: 'Gayathri G. S.',
   initials: 'GS',
-  // The full-screen character on the home page. `wide` is used on computers,
-  // `tall` on phones. `videos` holds the animated versions (leave one as null to
-  // show the still image instead); the still images also show while a video loads.
-  aboutArt: {
-    wide: 'images/about-wide.jpg',
-    videos: {
-      wide: 'images/about-wide.mp4',
-    },
-  },
   // The short line under "About Gayathri" on the home page.
   intro: 'MS Educational Psychology & Methodology student at the University at Albany, on the path to Counseling Psychology.',
   tagline: [
