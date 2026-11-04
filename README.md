@@ -6,8 +6,8 @@ builds the site and publishes it to GitHub Pages
 
 ## Where things live
 
-The whole site is one screen: milestone stickers (places
-and roles, such as UAlbany and Osmania University) sit around the title, and clicking a sticker
+The whole site is one screen: a 3D illustration of Gayathri fills it, milestone stickers (places
+and roles, such as UAlbany and Osmania University) sit around her, and clicking a sticker
 opens that milestone in a frosted-glass panel over the home screen. Each milestone has its own
 address, such as `/ualbany`, which opens the home screen with that panel already open. The
 sections (About, Research, Experience, Education, Skills, Contact) still work at their own
@@ -17,6 +17,7 @@ addresses, such as `/research`, but have no sticker for now.
   with their titles and intro lines, and the `milestones` with their stickers. This is the
   file to edit for updates.
 - `public/stickers/`: the milestone sticker images
+- `public/images/`: the home-screen illustration (`about-me.jpg`)
 - `src/pages/`: the content of each section's panel (`Milestone.jsx` for every milestone)
 - `src/components/`: the header, home title (`Hero`), milestone `Stickers`, and glass `Panel`.
   Sticker positions are set at the top of `Stickers.jsx`.
@@ -30,6 +31,10 @@ addresses, such as `/research`, but have no sticker for now.
   in `src/data/content.js` with its address, title, intro, and `ratio` (the image's width ÷
   height, so stickers of different shapes get a similar size). Only the shadow is added by
   the site.
+- **Replace the home-screen illustration or add its video:** save the image as
+  `public/images/about-me.jpg` (16:9, plain background matching `--bg` in `src/styles.css`).
+  For an animated version, add an MP4 to `public/images/` and set `aboutArt.videos.wide` in
+  `src/data/content.js`. If her outline changes, update `OUTLINE` at the top of `Stickers.jsx`.
 - **Edit the About text:** change `about.paragraphs` in `src/data/content.js`.
 - **Change a section's title or intro line:** edit `pages` at the bottom of `src/data/content.js`.
 - **Add a job or project:** copy an existing entry in `experience` or `research.projects`

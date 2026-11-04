@@ -5,10 +5,10 @@ import { milestones } from '../data/content.js';
 const src = (file) => import.meta.env.BASE_URL + file;
 
 // Where each sticker sits, in the same order as `milestones` in content.js: [x %, y %, tilt in degrees].
-// Her outline in the computer video, as % of the frame width: the widest left and right
-// edges (over the whole animation) beside each row of stickers. Measured from the video.
-const OUTLINE = [[35.9, 57.6], [34.6, 58.8], [34.4, 65.7]];
-const OUTLINE_BELOW = 28.3;          // left edge further down, for a sticker that moves below
+// Her outline in the home-screen image, as % of the frame width: the widest left and right
+// edges (hair included) beside each row of stickers. Measured from the image.
+const OUTLINE = [[37.1, 63.2], [34.5, 64.1], [32.2, 66.8]];
+const OUTLINE_BELOW = 26.8;          // left edge further down, for a sticker that moves below
 
 const LAYOUTS = {
   // Computers: rows of stickers beside her head and shoulders; [ignored x, y % of the frame, tilt].
@@ -46,7 +46,7 @@ export default function Stickers() {
   const open = pathname !== '/';
   const wide = w >= h;
 
-  // On computers the character video fills the window like `object-fit: cover`
+  // On computers the character image fills the window like `object-fit: cover`
   // (16:9, aligned 30% from the top), so map frame % to screen pixels the same way.
   const stageW = Math.max(w, (h * 16) / 9), stageH = (stageW * 9) / 16;
   const stageLeft = (w - stageW) / 2, stageTop = (h - stageH) * 0.3;
@@ -61,9 +61,9 @@ export default function Stickers() {
     if (open) size = 48;
   } else {
     // Stickers sit an equal gap from her outline on both sides, row by row. With a panel
-    // open she slides left by 22% of the window (see .panel-open in styles.css) and the
+    // open she slides left by 15% of the window (see .panel-open in styles.css) and the
     // right-hand stickers must also fit before the panel.
-    const shift = open ? 0.22 * w : 0;
+    const shift = open ? 0.15 * w : 0;
     const panelLeft = open ? w - 24 - Math.min(620, 0.52 * w) : w;
     const toX = (p) => stageLeft + (p / 100) * stageW - shift;
     const toY = (p) => stageTop + (p / 100) * stageH;
