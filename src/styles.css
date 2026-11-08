@@ -1,7 +1,7 @@
 /* ---------- Theme tokens ---------- */
 :root {
-  /* Page background: soft lavender matched to the character image (film grain added on html) */
-  --bg: #C9B0BA;
+  /* Page background: soft lavender; with the film grain on top (added on html) it matches the character image */
+  --bg: #B89BA9;
   /* Cards stay a warm cream so text is easy to read */
   --surface: #FBF7F6;
   --text: #1A1216;
@@ -101,6 +101,14 @@ a:focus-visible, button:focus-visible {
   object-fit: cover; object-position: center 30%;
   transition: transform .7s cubic-bezier(.22, .8, .24, 1);
 }
+/* computers: 85% of the screen height, centered and standing on the bottom edge.
+   Stickers.jsx uses the same size (IMAGE_HEIGHT). */
+@media (min-aspect-ratio: 1/1) {
+  .about-hero-media {
+    inset: auto; left: 50%; bottom: 0; width: auto; height: 85%; max-width: none;
+    transform: translateX(-50%);
+  }
+}
 .about-hero-text {
   position: absolute; left: 0; right: 0; bottom: clamp(40px, 8vh, 80px);
   text-align: center; color: #FFFFFF;
@@ -114,6 +122,12 @@ a:focus-visible, button:focus-visible {
 .about-hero-text p {
   margin: 14px auto 0; max-width: 560px; font-size: 17px; font-weight: 600;
   text-shadow: 0 1px 12px rgba(38, 33, 92, 0.5);
+}
+/* computers: a smaller title, low on her top, so it stays below her chin */
+@media (min-aspect-ratio: 1/1) {
+  .about-hero-text { bottom: clamp(16px, 3vh, 32px); }
+  .about-hero h1 { font-size: clamp(48px, 7.5vh, 84px); }
+  .about-hero-text p { margin-top: 8px; }
 }
 .panel-open .about-hero-text { opacity: 0; transform: translateY(20px); pointer-events: none; }
 /* phones: the character cropped to her, standing at the bottom of the screen,
@@ -168,7 +182,7 @@ a:focus-visible, button:focus-visible {
 }
 @keyframes panel-in { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
 @media (min-aspect-ratio: 1/1) {
-  .panel-open .about-hero-media { transform: translateX(-15%); }
+  .panel-open .about-hero-media { transform: translateX(calc(-50% - 15vw)); }
 }
 /* tall screens (phones): panel rises from the bottom, face stays visible above it */
 @media (max-aspect-ratio: 1/1) {

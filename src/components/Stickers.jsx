@@ -9,6 +9,8 @@ const src = (file) => import.meta.env.BASE_URL + file;
 // edges (hair included) beside each row of stickers. Measured from the image.
 const OUTLINE = [[37.1, 63.2], [34.5, 64.1], [32.2, 66.8]];
 const OUTLINE_BELOW = 26.8;          // left edge further down, for a sticker that moves below
+const IMAGE_RATIO = 1920 / 1071;     // the image's width ÷ height
+const IMAGE_HEIGHT = 0.85;           // as a share of the window height; it stands on the bottom edge
 
 const LAYOUTS = {
   // Computers: rows of stickers beside her head and shoulders; [ignored x, y % of the frame, tilt].
@@ -46,10 +48,11 @@ export default function Stickers() {
   const open = pathname !== '/';
   const wide = w >= h;
 
-  // On computers the character image fills the window like `object-fit: cover`
-  // (16:9, aligned 30% from the top), so map frame % to screen pixels the same way.
-  const stageW = Math.max(w, (h * 16) / 9), stageH = (stageW * 9) / 16;
-  const stageLeft = (w - stageW) / 2, stageTop = (h - stageH) * 0.3;
+  // On computers the character image is IMAGE_HEIGHT of the window tall, centered and on
+  // the bottom edge (see .about-hero-media in styles.css), so map frame % to screen pixels
+  // the same way.
+  const stageH = IMAGE_HEIGHT * h, stageW = stageH * IMAGE_RATIO;
+  const stageLeft = (w - stageW) / 2, stageTop = h - stageH;
 
   // Sticker size scales with the window.
   const fullSize = wide ? Math.round(Math.min(105, Math.max(68, h * 0.12))) : 62;

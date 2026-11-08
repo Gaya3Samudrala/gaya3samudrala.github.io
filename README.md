@@ -32,9 +32,9 @@ addresses, such as `/research`, but have no sticker for now.
   height, so stickers of different shapes get a similar size). Only the shadow is added by
   the site.
 - **Replace the home-screen illustration or add its video:** save the image as
-  `public/images/about-me.jpg` (16:9, plain background matching `--bg` in `src/styles.css`).
+  `public/images/about-me.jpg` (16:9, plain lavender background; `--bg` in `src/styles.css` is set a little darker so that, with the film grain on top, the page matches it).
   For an animated version, add an MP4 to `public/images/` and set `aboutArt.videos.wide` in
-  `src/data/content.js`. If her outline changes, update `OUTLINE` at the top of `Stickers.jsx`.
+  `src/data/content.js`. If her outline changes, update `OUTLINE` at the top of `Stickers.jsx`; her size on computers is `IMAGE_HEIGHT` there and in `.about-hero-media` in `src/styles.css`.
 - **Edit the About text:** change `about.paragraphs` in `src/data/content.js`.
 - **Change a section's title or intro line:** edit `pages` at the bottom of `src/data/content.js`.
 - **Add a job or project:** copy an existing entry in `experience` or `research.projects`
