@@ -10,7 +10,7 @@ const src = (file) => import.meta.env.BASE_URL + file;
 const OUTLINE = [[37.1, 63.2], [34.5, 64.1], [32.2, 66.8]];
 const OUTLINE_BELOW = 26.8;          // left edge further down, for a sticker that moves below
 const IMAGE_RATIO = 1920 / 1071;     // the image's width ÷ height
-const IMAGE_HEIGHT = 0.85;           // as a share of the window height; it stands on the bottom edge
+const IMAGE_HEIGHT = 0.7;            // as a share of the window height; it stands on the bottom edge
 
 const LAYOUTS = {
   // Computers: rows of stickers beside her head and shoulders; [ignored x, y % of the frame, tilt].

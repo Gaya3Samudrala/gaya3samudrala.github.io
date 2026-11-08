@@ -101,11 +101,11 @@ a:focus-visible, button:focus-visible {
   object-fit: cover; object-position: center 30%;
   transition: transform .7s cubic-bezier(.22, .8, .24, 1);
 }
-/* computers: 85% of the screen height, centered and standing on the bottom edge.
+/* computers: 70% of the screen height, centered and standing on the bottom edge.
    Stickers.jsx uses the same size (IMAGE_HEIGHT). */
 @media (min-aspect-ratio: 1/1) {
   .about-hero-media {
-    inset: auto; left: 50%; bottom: 0; width: auto; height: 85%; max-width: none;
+    inset: auto; left: 50%; bottom: 0; width: auto; height: 70%; max-width: none;
     transform: translateX(-50%);
   }
 }
