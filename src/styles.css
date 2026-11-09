@@ -115,7 +115,7 @@ a:focus-visible, button:focus-visible {
   transition: opacity .35s ease, transform .5s ease;
 }
 .about-hero h1 {
-  font-family: "Fredoka", "Nunito", sans-serif; font-weight: 600;
+  font-family: "Yatra One", "Nunito", sans-serif; font-weight: 400;
   font-size: clamp(56px, 10vw, 128px); line-height: 1; letter-spacing: -0.01em;
   text-shadow: 0 2px 24px rgba(38, 33, 92, 0.35);
 }
