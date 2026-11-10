@@ -68,13 +68,13 @@ export const research = {
   ],
 };
 
-// The AI & Society fellowship, for its own sticker (sticker image to come).
+// The AI & Society fellowship, shown by its own sticker.
 // Describe the role only: no findings without the professor's permission.
 export const fellowship = {
   title: 'AI & Society Experiential Learning Fellow',
   tag: 'Fellowship',
-  meta: 'AI & Society College, University at Albany, SUNY · January 2026 – July 2026',
-  summary:
+  meta: ['AI & Society College, University at Albany, SUNY · January 2026 – July 2026'],
+  lede:
     'Selected as a funded fellow to conduct a qualitative project examining how faculty use AI in classroom environments.',
   bullets: [
     'Designed interview protocols; scheduled and conducted faculty interviews; managed data recording and transcription.',
@@ -258,6 +258,15 @@ export const milestones = [
     label: 'Research',
     sticker: 'stickers/research.png',
     ratio: 501 / 700,
+  },
+  {
+    path: '/ai-society',
+    label: 'AI & Society College fellowship',
+    sticker: 'stickers/ai-society.png',
+    ratio: 700 / 583,
+    title: 'AI & Society College',
+    intro: 'My fellowship at the University at Albany.',
+    entries: [fellowship],
   },
 ];
 

@@ -28,6 +28,7 @@ export default function Milestone({ path }) {
             <ul>
               {entry.bullets.map((b) => <li key={b}>{b}</li>)}
             </ul>
+            {entry.status && <p className="status">{entry.status}</p>}
           </article>
         )
       )}
