@@ -239,7 +239,7 @@ export const timeline = [
   { id: 'asha-hospital', group: 'Internships', focus: '/asha-hospital', item: work('Department of Clinical Psychology, ASHA Hospital') },
   { id: 'niepid', focus: '/niepid', item: work('NIEPID') },
   { id: 'osmania', group: "Bachelor's", focus: '/osmania', item: education[1] },
-  { id: 'self-esteem', focus: '/osmania', item: research.projects[1] },
+  { id: 'self-esteem', focus: '/research', item: research.projects[1] },
 ];
 
 // Each block is a card; each group inside is shown as a list or as chips.
