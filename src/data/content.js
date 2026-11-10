@@ -268,6 +268,24 @@ export const milestones = [
     intro: 'My fellowship at the University at Albany.',
     entries: [fellowship],
   },
+  {
+    path: '/asha-hospital',
+    label: 'ASHA Hospital',
+    sticker: 'stickers/asha.png',
+    ratio: 642 / 700,
+    title: 'ASHA Hospital',
+    intro: 'My clinical psychology internship in Hyderabad, India.',
+    entries: [experience[1].entries.find((e) => e.title === 'Department of Clinical Psychology, ASHA Hospital')],
+  },
+  {
+    path: '/niepid',
+    label: 'NIEPID',
+    sticker: 'stickers/niepid.png',
+    ratio: 471 / 700,
+    title: 'NIEPID',
+    intro: 'My internship at the National Institute for the Empowerment of Persons with Intellectual Disabilities, Hyderabad, India.',
+    entries: [experience[1].entries.find((e) => e.title === 'NIEPID')],
+  },
 ];
 
 // Each block is a card; each group inside is shown as a list or as chips.
