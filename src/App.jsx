@@ -1,33 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
-import About from './pages/About.jsx';
-import Research from './pages/Research.jsx';
-import Experience from './pages/Experience.jsx';
-import Education from './pages/Education.jsx';
-import Skills from './pages/Skills.jsx';
-import Contact from './pages/Contact.jsx';
-import Milestone from './pages/Milestone.jsx';
-import { milestones } from './data/content.js';
 
-// The home screen ("/") shows just the animation; every other address opens
-// that section's or milestone's panel over it. Unknown addresses open a "not found" panel.
+// Every address shows the same page; Layout scrolls to the entry the address names
+// (e.g. /ualbany), and unknown addresses open at the top.
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route index element={null} />
-          <Route path="about" element={<About />} />
-          <Route path="research" element={<Research />} />
-          <Route path="experience" element={<Experience />} />
-          <Route path="education" element={<Education />} />
-          <Route path="skills" element={<Skills />} />
-          <Route path="contact" element={<Contact />} />
-          {milestones.filter((m) => m.entries).map(({ path }) => (
-            <Route key={path} path={path.slice(1)} element={<Milestone path={path} />} />
-          ))}
-          <Route path="*" element={null} />
-        </Route>
+        <Route path="*" element={<Layout />} />
       </Routes>
     </BrowserRouter>
   );

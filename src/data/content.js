@@ -211,81 +211,35 @@ export const education = [
   },
 ];
 
-// Milestones: the stickers around the character. Clicking one opens its panel.
+// Milestones: the stickers scattered around the character (see Stickers.jsx).
 // `sticker` is the image in public/stickers/ (cut out, with its own white border),
 // `ratio` its width ÷ height, so stickers of different shapes get a similar size.
-// `entries` (from `education` or `experience`) are shown as cards in the panel. A sticker
-// without `entries` opens the section in `pages` with the same `path` instead.
+// Clicking a sticker scrolls to its first entry in `timeline` below.
 export const milestones = [
-  {
-    path: '/ualbany',
-    label: 'University at Albany',
-    sticker: 'stickers/ualbany-damien.png',
-    ratio: 299 / 500,
-    title: 'University at Albany',
-    intro: 'Where I am doing my master\'s, in Albany, New York.',
-    entries: [education[0]],
-  },
-  {
-    path: '/osmania',
-    label: 'Osmania University',
-    sticker: 'stickers/osmania.png',
-    ratio: 700 / 304,
-    title: 'Osmania University',
-    intro: 'Where I did my bachelor\'s, in Hyderabad, India.',
-    entries: [education[1]],
-  },
-  {
-    path: '/project-access',
-    label: 'Project ACCESS',
-    sticker: 'stickers/project-access-vinyl.png',
-    ratio: 1,
-    title: 'Project ACCESS',
-    intro: 'My current role, supporting UAlbany students\' health and well-being.',
-    entries: [experience[0].entries[0]],
-  },
-  {
-    path: '/speech-therapy',
-    label: 'Speech therapy',
-    sticker: 'stickers/speech-blocks.png',
-    ratio: 700 / 402,
-    title: 'Speech therapy',
-    intro: 'Working with children at Ashoka Multispecialty Rehabilitation Center, Hyderabad.',
-    entries: [experience[0].entries.find((e) => e.title === 'Assistant Speech Therapist')],
-  },
-  {
-    path: '/research',
-    label: 'Research',
-    sticker: 'stickers/research.png',
-    ratio: 501 / 700,
-  },
-  {
-    path: '/ai-society',
-    label: 'AI & Society College fellowship',
-    sticker: 'stickers/ai-society.png',
-    ratio: 700 / 583,
-    title: 'AI & Society College',
-    intro: 'My fellowship at the University at Albany.',
-    entries: [fellowship],
-  },
-  {
-    path: '/asha-hospital',
-    label: 'ASHA Hospital',
-    sticker: 'stickers/asha.png',
-    ratio: 642 / 700,
-    title: 'ASHA Hospital',
-    intro: 'My clinical psychology internship in Hyderabad, India.',
-    entries: [experience[1].entries.find((e) => e.title === 'Department of Clinical Psychology, ASHA Hospital')],
-  },
-  {
-    path: '/niepid',
-    label: 'NIEPID',
-    sticker: 'stickers/niepid.png',
-    ratio: 471 / 700,
-    title: 'NIEPID',
-    intro: 'My internship at the National Institute for the Empowerment of Persons with Intellectual Disabilities, Hyderabad, India.',
-    entries: [experience[1].entries.find((e) => e.title === 'NIEPID')],
-  },
+  { path: '/ualbany', label: 'University at Albany', sticker: 'stickers/ualbany-damien.png', ratio: 299 / 500 },
+  { path: '/osmania', label: 'Osmania University', sticker: 'stickers/osmania.png', ratio: 700 / 304 },
+  { path: '/project-access', label: 'Project ACCESS', sticker: 'stickers/project-access-vinyl.png', ratio: 1 },
+  { path: '/speech-therapy', label: 'Speech therapy', sticker: 'stickers/speech-blocks.png', ratio: 700 / 402 },
+  { path: '/research', label: 'Research', sticker: 'stickers/research.png', ratio: 501 / 700 },
+  { path: '/ai-society', label: 'AI & Society College fellowship', sticker: 'stickers/ai-society.png', ratio: 700 / 583 },
+  { path: '/asha-hospital', label: 'ASHA Hospital', sticker: 'stickers/asha.png', ratio: 642 / 700 },
+  { path: '/niepid', label: 'NIEPID', sticker: 'stickers/niepid.png', ratio: 471 / 700 },
+];
+
+const work = (title) => experience.flatMap((g) => g.entries).find((e) => e.title === title);
+
+// The scroll timeline, newest first. Each entry zooms in on the sticker at `focus`
+// (a milestone path); `group` starts a new chapter with that label.
+export const timeline = [
+  { id: 'ualbany', group: 'At UAlbany', focus: '/ualbany', item: education[0] },
+  { id: 'project-access', focus: '/project-access', item: work('Prevention Navigator, Project ACCESS') },
+  { id: 'ai-society', focus: '/ai-society', item: fellowship },
+  { id: 'meta-analysis', focus: '/research', item: research.projects[0] },
+  { id: 'speech-therapy', group: 'Work in India', focus: '/speech-therapy', item: work('Assistant Speech Therapist') },
+  { id: 'asha-hospital', group: 'Internships', focus: '/asha-hospital', item: work('Department of Clinical Psychology, ASHA Hospital') },
+  { id: 'niepid', focus: '/niepid', item: work('NIEPID') },
+  { id: 'osmania', group: "Bachelor's", focus: '/osmania', item: education[1] },
+  { id: 'self-esteem', focus: '/osmania', item: research.projects[1] },
 ];
 
 // Each block is a card; each group inside is shown as a list or as chips.
@@ -338,36 +292,12 @@ export const skills = [
   },
 ];
 
-// Sections of the site. Each opens as a glass panel over the home screen.
-// `path` is its web address, `intro` the line under its title (optional).
+// Other addresses, kept so old links still work: each scrolls to the timeline entry or
+// section with id `target` (no target: the top of the page).
 export const pages = [
-  {
-    path: '/about',
-    title: 'About me',
-    intro: 'A little about who I am and where I am headed.',
-  },
-  {
-    path: '/research',
-    title: 'Research',
-  },
-  {
-    path: '/experience',
-    title: 'Experience',
-    intro: 'Work, clinical internships, and leadership, from speech therapy with children to supporting college students\' well-being.',
-  },
-  {
-    path: '/education',
-    title: 'Education',
-    intro: 'My graduate and undergraduate studies in psychology.',
-  },
-  {
-    path: '/skills',
-    title: 'Skills and certifications',
-    intro: 'Trainings, research and data tools, clinical and assessment skills, and languages.',
-  },
-  {
-    path: '/contact',
-    title: "Let's connect",
-    intro: "I'm happy to talk about research, graduate study, or collaboration.",
-  },
+  { path: '/about', title: 'About me' },
+  { path: '/experience', title: 'Experience', target: 'project-access' },
+  { path: '/education', title: 'Education', target: 'ualbany' },
+  { path: '/skills', title: 'Skills and certifications', target: 'skills' },
+  { path: '/contact', title: "Let's connect", target: 'contact' },
 ];
