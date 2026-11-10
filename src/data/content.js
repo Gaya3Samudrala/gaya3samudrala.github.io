@@ -14,7 +14,7 @@ export const profile = {
     },
   },
   // The short line under "About Gayathri" on the home page.
-  intro: 'MS Educational Psychology & Methodology student at the University at Albany, on the path to Counseling Psychology.',
+  intro: "I am Gayathri, an MS student in Educational Psychology & Methodology at UAlbany, where I also support students' well-being through Project ACCESS. Outside of college, I love reading fiction and have recently developed a liking for hiking.",
   tagline: [
     'MS Educational Psychology & Methodology, University at Albany, SUNY',
     'On the path to Counseling Psychology',

@@ -110,7 +110,7 @@ a:focus-visible, button:focus-visible {
   }
 }
 .about-hero-text {
-  position: absolute; left: 0; right: 0; bottom: clamp(40px, 8vh, 80px);
+  position: absolute; left: 0; right: 0; bottom: clamp(8px, 1.5vh, 16px);
   text-align: center; color: #FFFFFF;
   transition: opacity .35s ease, transform .5s ease;
 }
@@ -120,14 +120,15 @@ a:focus-visible, button:focus-visible {
   text-shadow: 0 2px 24px rgba(38, 33, 92, 0.35);
 }
 .about-hero-text p {
-  margin: 14px auto 0; max-width: 560px; font-size: 17px; font-weight: 600;
+  /* as wide as her shirt, sleeve to sleeve (about 46% of the image's width) */
+  margin: 14px auto 0; max-width: min(calc(100vw - 32px), 59vh); font-family: "Quicksand", "Nunito", sans-serif;
+  font-size: 15px; line-height: 1.5; font-weight: 600; text-wrap: pretty;
   text-shadow: 0 1px 12px rgba(38, 33, 92, 0.5);
 }
 /* computers: a smaller title, low on her top, so it stays below her chin */
 @media (min-aspect-ratio: 1/1) {
-  .about-hero-text { bottom: clamp(16px, 3vh, 32px); }
   .about-hero h1 { font-size: clamp(48px, 7.5vh, 84px); }
-  .about-hero-text p { margin-top: 8px; }
+  .about-hero-text p { margin-top: 8px; max-width: 57vh; }
 }
 .panel-open .about-hero-text { opacity: 0; transform: translateY(20px); pointer-events: none; }
 /* phones: the character cropped to her, standing at the bottom of the screen,
