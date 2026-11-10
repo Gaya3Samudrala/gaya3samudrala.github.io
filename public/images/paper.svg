@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+  <!-- Paper texture laid over the whole site: fine grain plus a few small dark specks -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer>
+      <feFuncR type="linear" slope="2.4" intercept="-0.7"/>
+      <feFuncG type="linear" slope="2.4" intercept="-0.7"/>
+      <feFuncB type="linear" slope="2.4" intercept="-0.7"/>
+    </feComponentTransfer>
+  </filter>
+  <filter id="specks">
+    <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="1" seed="11" stitchTiles="stitch"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.15  0 0 0 0 0.1  0 0 0 0 0.12  -16 0 0 0 4.3"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#grain)" opacity="0.9"/>
+  <rect width="100%" height="100%" filter="url(#specks)" opacity="0.8"/>
+</svg>
