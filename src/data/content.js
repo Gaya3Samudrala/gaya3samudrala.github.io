@@ -145,7 +145,7 @@ export const experience = [
         title: 'Department of Child Psychology, Jiguar (NGO)',
         meta: ['Hyderabad, India · November 2022 – January 2023'],
         bullets: [
-          'Screened children in public schools for developmental delays, autism spectrum disorder, and learning disabilities using tools such as the M-CHAT-R/F and the Indian Scale for Assessment of Autism (ISAA).',
+          'Visited public schools to screen children for developmental delays, Autism Spectrum Disorder (ASD), and Learning Disabilities (LD), gaining experience in administering psychological assessments such as M-CHAT-R/F and the Indian Scale for Assessment of Autism (ISAA).',
           'Contributed to referral recommendations based on screening outcomes.',
         ],
       },
@@ -223,6 +223,7 @@ export const milestones = [
   { path: '/ai-society', label: 'AI & Society College fellowship', sticker: 'stickers/ai-society.png', ratio: 700 / 583 },
   { path: '/asha-hospital', label: 'ASHA Hospital', sticker: 'stickers/asha.png', ratio: 642 / 700 },
   { path: '/niepid', label: 'NIEPID', sticker: 'stickers/niepid.png', ratio: 471 / 700 },
+  { path: '/jiguar', label: 'Jiguar (NGO)', sticker: 'stickers/jiguar.png', ratio: 1 },
 ];
 
 const work = (title) => experience.flatMap((g) => g.entries).find((e) => e.title === title);
@@ -235,7 +236,8 @@ export const timeline = [
   { id: 'ai-society', focus: '/ai-society', item: fellowship },
   { id: 'meta-analysis', focus: '/research', item: research.projects[0] },
   { id: 'speech-therapy', group: 'Work in India', focus: '/speech-therapy', item: work('Assistant Speech Therapist') },
-  { id: 'asha-hospital', group: 'Internships', focus: '/asha-hospital', item: work('Department of Clinical Psychology, ASHA Hospital') },
+  { id: 'jiguar', group: 'Internships', focus: '/jiguar', item: work('Department of Child Psychology, Jiguar (NGO)') },
+  { id: 'asha-hospital', focus: '/asha-hospital', item: work('Department of Clinical Psychology, ASHA Hospital') },
   { id: 'niepid', focus: '/niepid', item: work('NIEPID') },
   { id: 'osmania', group: "Bachelor's", focus: '/osmania', item: education[1] },
   { id: 'self-esteem', focus: '/research', item: research.projects[1] },
