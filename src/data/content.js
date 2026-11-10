@@ -38,30 +38,50 @@ export const about = {
 };
 
 export const research = {
-  interests:
-    "My primary interest is the well-being of adolescents and young adults, the population I work with in my current role at UAlbany and the reason I'm pursuing a PhD in Counseling Psychology. I'm also interested in how neuroplasticity and other neurological systems in this population are shaped by lifestyle and environmental conditions, and more broadly in neuroscience, human development, and AI.",
   projects: [
     {
-      title: 'AI & Society Experiential Learning Fellow',
-      tag: 'Fellowship',
-      meta: 'AI & Society College, University at Albany, SUNY · January 2026 – July 2026',
-      summary:
-        'Selected as a funded fellow to conduct a qualitative project examining how faculty use AI in classroom environments.',
+      title: 'A meta-analysis on the relationship between language delays and externalizing behaviors in children aged 2 to 8 years',
+      tag: 'Meta-analysis',
+      meta: 'Schlomer, G. L., & Samudrala, G. G. (2026) · Department of Educational & Counseling Psychology, University at Albany, SUNY',
       bullets: [
-        'Designed interview protocols; scheduled and conducted faculty interviews; managed data recording and transcription.',
-        'Performing a thematic analysis and preparing an analytical report for the AI & Society College.',
-        'Collaborated across disciplines under faculty mentorship within a university-wide initiative.',
+        'Advisor: Dr. Gabriel Schlomer, University at Albany, SUNY',
+        'Conducted systematic searches and retrieved 3,243 records.',
+        'Screened 2,155 titles and abstracts in Rayyan after duplicate removal, identifying 9 studies for inclusion.',
+        'Conducting statistical analyses in R.',
       ],
-      status: 'Final report in preparation',
+      status: 'Manuscript in preparation',
     },
     {
-      title: 'Self-esteem and well-being in young adults',
-      tag: 'Independent study',
-      meta: 'Andhra Mahila Sabha Arts & Science College, Hyderabad, India · 2022',
-      summary:
-        'An individual quantitative study of the relationship between self-esteem and well-being among 100 participants aged 18–25, using the Self-Esteem Scale (Dhar & Dhar) and the PERMA Profiler. I handled consent, data collection, and analysis in SPSS (correlations and t-tests), and found a significant positive relationship between self-esteem and well-being.',
+      title: 'A study on the relationship between self-esteem and well-being',
+      tag: 'Individual research project',
+      meta: 'Samudrala, G. G. (2022) · Department of Psychology, Andhra Mahila Sabha Arts & Science College, Hyderabad, India',
+      bullets: [
+        'Conducted a quantitative study investigating the correlation between self-esteem and well-being in an Indian population. Recruited 100 participants (50 male, 50 female) aged 18 to 25 years to ensure a balanced sample for comparative analysis.',
+        'Drafted informed consent materials, communicated study procedures to participants, ensured confidentiality through de-identified online data collection, and maintained secure data storage.',
+        'Administered standardized measures, including the Self-Esteem Scale (SES-DSDU, Dhar & Dhar, 2009) and the PERMA Profiler (Butler & Kern, 2016).',
+        "Cleaned, coded, and managed the dataset. Conducted statistical analyses, including descriptive statistics, Pearson's correlations, and t-tests, to evaluate relationships between variables.",
+        'Interpreted statistical findings and authored a comprehensive project report summarizing results that indicated a significant positive relationship between self-esteem and well-being.',
+        'Presented findings at class and departmental research presentations.',
+      ],
+      status: 'Unpublished manuscript',
     },
   ],
+};
+
+// The AI & Society fellowship, for its own sticker (sticker image to come).
+// Describe the role only: no findings without the professor's permission.
+export const fellowship = {
+  title: 'AI & Society Experiential Learning Fellow',
+  tag: 'Fellowship',
+  meta: 'AI & Society College, University at Albany, SUNY · January 2026 – July 2026',
+  summary:
+    'Selected as a funded fellow to conduct a qualitative project examining how faculty use AI in classroom environments.',
+  bullets: [
+    'Designed interview protocols; scheduled and conducted faculty interviews; managed data recording and transcription.',
+    'Performing a thematic analysis and preparing an analytical report for the AI & Society College.',
+    'Collaborated across disciplines under faculty mentorship within a university-wide initiative.',
+  ],
+  status: 'Final report in preparation',
 };
 
 export const experience = [
@@ -194,7 +214,8 @@ export const education = [
 // Milestones: the stickers around the character. Clicking one opens its panel.
 // `sticker` is the image in public/stickers/ (cut out, with its own white border),
 // `ratio` its width ÷ height, so stickers of different shapes get a similar size.
-// `entries` (from `education` or `experience`) are shown as cards in the panel.
+// `entries` (from `education` or `experience`) are shown as cards in the panel. A sticker
+// without `entries` opens the section in `pages` with the same `path` instead.
 export const milestones = [
   {
     path: '/ualbany',
@@ -231,6 +252,12 @@ export const milestones = [
     title: 'Speech therapy',
     intro: 'Working with children at Ashoka Multispecialty Rehabilitation Center, Hyderabad.',
     entries: [experience[0].entries.find((e) => e.title === 'Assistant Speech Therapist')],
+  },
+  {
+    path: '/research',
+    label: 'Research',
+    sticker: 'stickers/research.png',
+    ratio: 501 / 700,
   },
 ];
 
@@ -285,7 +312,7 @@ export const skills = [
 ];
 
 // Sections of the site. Each opens as a glass panel over the home screen.
-// `path` is its web address, `intro` the line under its title.
+// `path` is its web address, `intro` the line under its title (optional).
 export const pages = [
   {
     path: '/about',
@@ -295,7 +322,6 @@ export const pages = [
   {
     path: '/research',
     title: 'Research',
-    intro: 'My research interests, fellowship, and independent study.',
   },
   {
     path: '/experience',

@@ -23,7 +23,7 @@ export default function App() {
           <Route path="education" element={<Education />} />
           <Route path="skills" element={<Skills />} />
           <Route path="contact" element={<Contact />} />
-          {milestones.map(({ path }) => (
+          {milestones.filter((m) => m.entries).map(({ path }) => (
             <Route key={path} path={path.slice(1)} element={<Milestone path={path} />} />
           ))}
           <Route path="*" element={null} />

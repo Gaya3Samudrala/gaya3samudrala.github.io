@@ -267,14 +267,6 @@ a:focus-visible, button:focus-visible {
 .facts dt { font-size: 13px; font-weight: 700; color: var(--lav-strong); text-transform: uppercase; letter-spacing: .06em; }
 .facts dd { margin: 2px 0 0; }
 
-/* Research */
-.interests {
-  background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--sage-line);
-  border-radius: 0 16px 16px 0; padding: 24px 28px; margin-bottom: 28px; box-shadow: var(--shadow);
-}
-.interests h2 { font-size: 28px; margin-bottom: 8px; }
-.interests p { margin: 0; }
-
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 18px; }
 .card, .entry, .skill-block {
   box-shadow: var(--shadow);

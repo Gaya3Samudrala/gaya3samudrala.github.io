@@ -3,10 +3,6 @@ import { research } from '../data/content.js';
 export default function Research() {
   return (
     <>
-          <div className="interests">
-            <h2>Research interests</h2>
-            <p>{research.interests}</p>
-          </div>
           <div className="cards">
             {research.projects.map((project) => (
               <article className="card" key={project.title}>
@@ -15,7 +11,7 @@ export default function Research() {
                   {project.tag && <span className="tag tag-lav">{project.tag}</span>}
                 </div>
                 <p className="meta">{project.meta}</p>
-                <p>{project.summary}</p>
+                {project.summary && <p>{project.summary}</p>}
                 {project.bullets && (
                   <ul>
                     {project.bullets.map((b) => <li key={b}>{b}</li>)}
