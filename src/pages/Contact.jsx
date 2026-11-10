@@ -17,15 +17,14 @@ function Icon({ name }) {
 export default function Contact() {
   return (
     <div className="contact-grid">
-            <a className="contact-card" href={`mailto:${profile.email}`}>
+            <div className="contact-card contact-card-static">
               <Icon name="mail" />
               <h2>Email</h2>
               <p className="contact-value">
                 {/* Let long addresses wrap at the @ rather than mid-word */}
                 {profile.email.split('@')[0]}<wbr />@{profile.email.split('@')[1]}
               </p>
-              <span className="explore-more">Send an email <span aria-hidden="true">→</span></span>
-            </a>
+            </div>
             <a className="contact-card" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
               <Icon name="link" />
               <h2>LinkedIn</h2>
@@ -36,7 +35,6 @@ export default function Contact() {
               <Icon name="pin" />
               <h2>Location</h2>
               <p className="contact-value">{profile.location}</p>
-              <span className="contact-note">University at Albany, SUNY</span>
             </div>
     </div>
   );

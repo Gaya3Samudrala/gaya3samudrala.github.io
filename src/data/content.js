@@ -263,7 +263,7 @@ export const skills = [
       {
         title: 'Research and data analysis',
         style: 'chips',
-        items: ['SPSS', 'R (beginner)', 'Rayyan.ai', 'Zotero (beginner)', 'Thematic analysis', 'Interview protocols'],
+        items: ['SPSS', 'R (beginner)', 'Rayyan.ai'],
       },
       { title: 'Survey tools', style: 'chips', items: ['Qualtrics', 'Microsoft Forms', 'Google Forms'] },
       { title: 'Productivity', style: 'chips', items: ['Microsoft Office', 'Google Workspace', 'Notion'] },
@@ -271,17 +271,6 @@ export const skills = [
   },
   {
     groups: [
-      {
-        title: 'Clinical and assessment',
-        style: 'list',
-        items: [
-          'Standardized assessments',
-          'M-CHAT-R/F and ISAA screening',
-          'Case history and mental status examination',
-          'Intervention planning and progress tracking',
-          'Psychoeducation and parent training',
-        ],
-      },
       {
         title: 'Languages',
         style: 'list',
