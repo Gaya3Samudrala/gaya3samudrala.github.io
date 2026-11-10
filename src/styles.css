@@ -124,14 +124,10 @@ a:focus-visible, button:focus-visible {
     transform: translateX(-50%);
   }
 }
-/* phones: the character cropped to her, standing at the bottom of the screen,
-   with its top edge fading into the page (Stage.jsx: PHONE_HEIGHT) */
+/* phones: the character cropped to her, standing at the bottom of the screen
+   (Stage.jsx: PHONE_HEIGHT); no fade, the image's background matches the page */
 @media (max-aspect-ratio: 1/1) {
-  .about-hero-media {
-    top: auto; height: 72%; object-fit: cover; object-position: center;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 35%);
-    mask-image: linear-gradient(to bottom, transparent, #000 35%);
-  }
+  .about-hero-media { top: auto; height: 72%; object-fit: cover; object-position: center; }
 }
 /* while reading the timeline the picture softens, like a camera focused on the sticker */
 .stage-zoom .about-hero-media, .stage-end .about-hero-media { filter: blur(3px); }

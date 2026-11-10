@@ -8,7 +8,7 @@ export default function Header() {
       <nav className="nav container" aria-label="Home">
         <Link className="brand" to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span className="brand-mark" aria-hidden="true">ψ</span>
-          <span className="brand-name">{profile.shortName}</span>
+          <span className="brand-name">{profile.name}</span>
         </Link>
       </nav>
     </header>

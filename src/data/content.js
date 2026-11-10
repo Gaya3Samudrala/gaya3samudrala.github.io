@@ -3,7 +3,6 @@
 
 export const profile = {
   name: 'Gayathri Gupta Samudrala',
-  shortName: 'Gayathri G. S.',
   initials: 'GS',
   // The full-screen character on the home page. `videos.wide` holds the animated
   // version (leave it null to show the still image); the still also shows while it loads.
