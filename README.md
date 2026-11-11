@@ -32,7 +32,9 @@ own address, such as `/ualbany`, which opens the page at that entry.
   `src/data/content.js` with its address and `ratio` (the image's width ÷ height, so stickers
   of different shapes get a similar size), then add its entry to `timeline` with that address
   as `focus`. The stickers are scattered automatically, away from her and from each other;
-  change `SEED` at the top of `src/components/Stage.jsx` for a different scatter.
+  change `SEED` at the top of `src/components/Stage.jsx` for a different scatter. On computers
+  the scatter is worked out for one window size (`LAYOUT_SIZE`) and scaled to fit, so it looks
+  the same on every screen.
 - **Replace the home-screen illustration or add its video:** save the image as
   `public/images/about-me.jpg` (16:9, plain lavender background, the same color as `--bg` in
   `src/styles.css`). For an animated version, add an MP4 to `public/images/` and set

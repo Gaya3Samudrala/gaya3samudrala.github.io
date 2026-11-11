@@ -226,7 +226,7 @@ export const milestones = [
   { path: '/ai-society', label: 'AI & Society College fellowship', sticker: 'stickers/ai-society.png', ratio: 700 / 583 },
   { path: '/asha-hospital', label: 'ASHA Hospital', sticker: 'stickers/asha.png', ratio: 642 / 700 },
   { path: '/niepid', label: 'NIEPID', sticker: 'stickers/niepid.png', ratio: 471 / 700 },
-  { path: '/jiguar', label: 'Jiguar (NGO)', sticker: 'stickers/jiguar.png', ratio: 600 / 575, between: ['/speech-therapy', '/research'] },
+  { path: '/jiguar', label: 'Jiguar (NGO)', sticker: 'stickers/jiguar-die-cut.png', ratio: 600 / 575, between: ['/speech-therapy', '/research'] },
 ];
 
 const work = (title) => experience.flatMap((g) => g.entries).find((e) => e.title === title);

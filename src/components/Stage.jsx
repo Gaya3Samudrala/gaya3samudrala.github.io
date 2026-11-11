@@ -9,6 +9,7 @@ const IMAGE_HEIGHT = 0.7;            // computers: share of the window height, s
 const PHONE_HEIGHT = 0.72;           // phones: the image box's share of the window height (see styles.css)
 const ZOOM = 2.6;                    // how far the camera zooms in on a sticker while scrolling
 const SEED = 11;                     // change it for a different scatter of the stickers
+const LAYOUT_SIZE = [1708, 892];     // computers: the window the scatter is worked out for, then scaled to fit
 
 // True while `query` matches; updates when the screen is resized or rotated.
 function useMedia(query) {
@@ -169,6 +170,23 @@ function scatter(w, h, mask, textTop) {
   return placed;
 }
 
+// Computers: the same scatter on every screen. It's worked out once for LAYOUT_SIZE and then
+// scaled with the picture, so each sticker keeps its spot around her. Phones, and windows
+// narrower than the picture, get their own scatter.
+function layout(w, h, mask, textTop) {
+  const box = imageBox(w, h);
+  if (w < h || box.w > w) return scatter(w, h, mask, textTop);
+  const [rw, rh] = LAYOUT_SIZE, k = h / rh, ref = imageBox(rw, rh);
+  return scatter(rw, rh, mask, rh - (h - textTop) / k).map((s) => {
+    const hh = s.hh * k;
+    return {
+      ...s, hw: s.hw * k, hh, w: s.w * k, h: s.h * k,
+      x: box.x + (s.x - ref.x) * k,
+      y: Math.max(76 + hh, box.y + (s.y - ref.y) * k),   // never under the header
+    };
+  });
+}
+
 // The full-screen picture with the milestone stickers scattered around her. While the
 // timeline is being read (`mode` "zoom"), the camera zooms in on the sticker at `focus`;
 // at the end ("end") it zooms back out, with the picture softly blurred behind the text.
@@ -190,7 +208,7 @@ export default function Stage({ mode, focus, onSelect }) {
     document.fonts?.ready.then(measure);
   }, [w, h]);
 
-  const spots = useMemo(() => (mask && textTop ? scatter(w, h, mask, textTop) : null), [w, h, mask, textTop]);
+  const spots = useMemo(() => (mask && textTop ? layout(w, h, mask, textTop) : null), [w, h, mask, textTop]);
 
   let camera;
   const i = milestones.findIndex((m) => m.path === focus);
