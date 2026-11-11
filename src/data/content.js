@@ -73,6 +73,10 @@ export const fellowship = {
   title: 'AI & Society Experiential Learning Fellow',
   tag: 'Fellowship',
   meta: ['AI & Society College, University at Albany, SUNY · January 2026 – July 2026'],
+  link: {
+    href: 'https://www.albany.edu/ai-plus/ai-society-college#tab-about',
+    label: 'About AI & Society College',
+  },
   bullets: [
     'Selected as a funded fellow ($4,200 stipend) to conduct a qualitative project examining faculty use of AI in classroom environments.',
     'Designed interview questions; scheduled and conducted faculty interviews; managed data recording and transcription.',
