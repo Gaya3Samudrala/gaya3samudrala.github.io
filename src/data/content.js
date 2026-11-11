@@ -213,17 +213,20 @@ export const education = [
 // Milestones: the stickers scattered around the character (see Stickers.jsx).
 // `sticker` is the image in public/stickers/ (cut out, with its own white border),
 // `ratio` its width ÷ height, so stickers of different shapes get a similar size.
-// Clicking a sticker scrolls to its first entry in `timeline` below.
+// Clicking a sticker scrolls to its first entry in `timeline` below. `between` (optional)
+// places a sticker midway between two stickers listed before it, instead of at random;
+// `lift` (optional) moves a sticker up by that share of the screen height, where there's room;
+// `shift` (optional, computers) moves it by [x, y] shares of the screen width and height.
 export const milestones = [
   { path: '/ualbany', label: 'University at Albany', sticker: 'stickers/ualbany-damien.png', ratio: 299 / 500 },
-  { path: '/osmania', label: 'Osmania University', sticker: 'stickers/osmania.png', ratio: 700 / 304 },
+  { path: '/osmania', label: 'Osmania University', sticker: 'stickers/osmania.png', ratio: 700 / 304, lift: 0.12 },
   { path: '/project-access', label: 'Project ACCESS', sticker: 'stickers/project-access-vinyl.png', ratio: 1 },
   { path: '/speech-therapy', label: 'Speech therapy', sticker: 'stickers/speech-blocks.png', ratio: 700 / 402 },
-  { path: '/research', label: 'Research', sticker: 'stickers/research.png', ratio: 501 / 700 },
+  { path: '/research', label: 'Research', sticker: 'stickers/research.png', ratio: 501 / 700, shift: [0.05, 0.07] },
   { path: '/ai-society', label: 'AI & Society College fellowship', sticker: 'stickers/ai-society.png', ratio: 700 / 583 },
   { path: '/asha-hospital', label: 'ASHA Hospital', sticker: 'stickers/asha.png', ratio: 642 / 700 },
   { path: '/niepid', label: 'NIEPID', sticker: 'stickers/niepid.png', ratio: 471 / 700 },
-  { path: '/jiguar', label: 'Jiguar (NGO)', sticker: 'stickers/jiguar.png', ratio: 1 },
+  { path: '/jiguar', label: 'Jiguar (NGO)', sticker: 'stickers/jiguar.png', ratio: 600 / 575, between: ['/speech-therapy', '/research'] },
 ];
 
 const work = (title) => experience.flatMap((g) => g.entries).find((e) => e.title === title);

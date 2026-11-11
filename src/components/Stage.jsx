@@ -90,6 +90,7 @@ function scatter(w, h, mask, textTop) {
   const rand = random(SEED);
   const base = wide ? Math.min(105, Math.max(68, h * 0.12)) : 46;
   const gap = wide ? 16 : 10, margin = wide ? 14 : 8;   // space between stickers, and from her
+  const room = wide ? Math.max(40, h * 0.07) : margin;  // computers: the space the stickers then keep from her
   const x0 = wide ? Math.max(12, box.x) : 12, x1 = wide ? Math.min(w - 12, box.x + box.w) : w - 12;
   const y0 = 76, y1 = textTop - 8;
   const herX = box.x + box.w / 2, herY = box.y + box.h * 0.35;
@@ -97,34 +98,74 @@ function scatter(w, h, mask, textTop) {
     const cx = Math.floor(((x - box.x) / box.w) * mask.cols), cy = Math.floor(((y - box.y) / box.h) * mask.rows);
     return cx >= 0 && cy >= 0 && cx < mask.cols && cy < mask.rows && mask.cells[cy * mask.cols + cx] === 1;
   };
-  const clearOfHer = (x, y, hw, hh) => {
-    for (let yy = y - hh - margin; yy <= y + hh + margin; yy += 6)
-      for (let xx = x - hw - margin; xx <= x + hw + margin; xx += 6) if (isHer(xx, yy)) return false;
+  const clearOfHer = (x, y, hw, hh, m = margin) => {
+    for (let yy = y - hh - m; yy <= y + hh + m; yy += 6)
+      for (let xx = x - hw - m; xx <= x + hw + m; xx += 6) if (isHer(xx, yy)) return false;
     return true;
   };
 
   const placed = [];
-  for (const { ratio } of milestones) {
+  for (const [n, { ratio, between }] of milestones.entries()) {
     const size = base * (0.88 + rand() * 0.22);
     const [sw, sh] = dims(size, ratio);
     const hw = sw / 2 + 6, hh = sh / 2 + 6;                 // room for the tilt and shadow
     const tilt = Math.round((rand() - 0.5) * 26);
+    // a sticker set `between` two others goes as close to their midpoint as it fits
+    const [a, b] = (between || []).map((path) => placed[milestones.findIndex((m) => m.path === path)]);
+    const mid = a && b && { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    // the others take turns on her left and right, so both sides get about as many
+    const [lo, hi] = mid ? [x0, x1] : n % 2 ? [herX, x1] : [x0, herX];
     let best = null, bestScore = -Infinity, valid = 0;
-    for (let t = 0; t < 3000 && valid < 24; t++) {
-      const x = x0 + hw + rand() * Math.max(0, x1 - x0 - 2 * hw);
+    for (let t = 0; t < 3000 && valid < (mid ? 400 : 24); t++) {
+      const x = Math.max(x0 + hw, Math.min(x1 - hw, lo + rand() * (hi - lo)));
       const y = y0 + hh + rand() * Math.max(0, y1 - y0 - 2 * hh);
-      const apart = placed.every((p) => Math.abs(p.x - x) > p.hw + hw + gap || Math.abs(p.y - y) > p.hh + hh + gap);
+      const g = mid ? gap * 4 : gap;                       // a placed-between sticker keeps extra space
+      const apart = placed.every((p) => Math.abs(p.x - x) > p.hw + hw + g || Math.abs(p.y - y) > p.hh + hh + g);
       if (!apart || !clearOfHer(x, y, hw, hh)) {
         if (!best) best = { x, y };                         // fallback if nothing fits
         continue;
       }
       valid++;
       const nearest = placed.length ? Math.min(...placed.map((p) => Math.hypot(p.x - x, p.y - y))) : 0;
-      const score = nearest - 0.35 * Math.hypot(x - herX, y - herY);
+      const score = mid ? -Math.hypot(x - mid.x, y - mid.y) : nearest - 0.35 * Math.hypot(x - herX, y - herY);
       if (score > bestScore || bestScore === -Infinity) { bestScore = score; best = { x, y }; }
     }
     placed.push({ ...best, hw, hh, w: sw, h: sh, tilt });
   }
+
+  // Then nudge any sticker that ended up close to her straight outward, away from her
+  // middle, until it keeps `room` from her, staying on screen and off the other stickers.
+  placed.forEach((s, n) => {
+    const dx = s.x - herX, dy = s.y - herY, len = Math.hypot(dx, dy) || 1;
+    for (let k = 0; k < 120; k++) {
+      const x = s.x + (dx / len) * k * 4, y = s.y + (dy / len) * k * 4;
+      if (x - s.hw < x0 || x + s.hw > x1 || y - s.hh < y0 || y + s.hh > y1) break;
+      const apart = placed.every((p, j) => j === n || Math.abs(p.x - x) > p.hw + s.hw + gap || Math.abs(p.y - y) > p.hh + s.hh + gap);
+      if (apart && clearOfHer(x, y, s.hw, s.hh, room)) { s.x = x; s.y = y; break; }
+    }
+  });
+
+  // A sticker with `lift` moves up by that share of the screen height, or as far as it can
+  // while keeping clear of her and well clear of the other stickers.
+  milestones.forEach(({ lift }, n) => {
+    const s = placed[n];
+    for (let k = Math.round((lift || 0) * h); k > 0; k -= 4) {
+      const y = s.y - k;
+      if (y - s.hh < y0) continue;
+      const apart = placed.every((p, j) => j === n || Math.abs(p.x - s.x) > p.hw + s.hw + gap * 3 || Math.abs(p.y - y) > p.hh + s.hh + gap * 3);
+      if (apart && clearOfHer(s.x, y, s.hw, s.hh, room)) { s.y = y; break; }
+    }
+  });
+
+  // Computers: a sticker with `shift` [x, y] moves by those shares of the screen width and
+  // height, if it still fits there.
+  milestones.forEach(({ shift }, n) => {
+    if (!shift || !wide) return;
+    const s = placed[n], x = s.x + shift[0] * w, y = s.y + shift[1] * h;
+    const fits = x - s.hw >= x0 && x + s.hw <= x1 && y - s.hh >= y0 && y + s.hh <= y1;
+    const apart = placed.every((p, j) => j === n || Math.abs(p.x - x) > p.hw + s.hw + gap || Math.abs(p.y - y) > p.hh + s.hh + gap);
+    if (fits && apart && clearOfHer(x, y, s.hw, s.hh, room)) { s.x = x; s.y = y; }
+  });
   return placed;
 }
 
