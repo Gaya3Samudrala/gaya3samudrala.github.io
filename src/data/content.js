@@ -29,8 +29,8 @@ export const about = {
     'I always wanted to do Counseling Psychology. I initially found opportunities to work with children and in Child Psychology (Special Education and Speech Therapy), I utilized the opportunities that came my way and I am transitioning into Counseling Psychology.',
   ],
   facts: [
-    { label: 'Currently', value: 'Prevention Navigator, Project ACCESS' },
-    { label: 'Studying', value: 'MS Educational Psychology, UAlbany (Dec 2026)' },
+    { label: 'Currently', value: 'Senior Research Aide (Prevention Navigator), Project ACCESS' },
+    { label: 'Studying', value: 'MS Educational Psychology, UAlbany (May 2027)' },
     { label: 'Based in', value: 'Albany, NY' },
     { label: 'Languages', value: 'English, Telugu, Hindi' },
   ],
@@ -73,14 +73,12 @@ export const fellowship = {
   title: 'AI & Society Experiential Learning Fellow',
   tag: 'Fellowship',
   meta: ['AI & Society College, University at Albany, SUNY · January 2026 – July 2026'],
-  lede:
-    'Selected as a funded fellow to conduct a qualitative project examining how faculty use AI in classroom environments.',
   bullets: [
-    'Designed interview protocols; scheduled and conducted faculty interviews; managed data recording and transcription.',
-    'Performing a thematic analysis and preparing an analytical report for the AI & Society College.',
-    'Collaborated across disciplines under faculty mentorship within a university-wide initiative.',
+    'Selected as a funded fellow ($4,200 stipend) to conduct a qualitative project examining faculty use of AI in classroom environments.',
+    'Designed interview questions; scheduled and conducted faculty interviews; managed data recording and transcription.',
+    'Analyzed key themes and insights from the interviews in a final fellowship report and submitted it to the faculty supervisor.',
+    'Engaged in interdisciplinary collaboration under faculty mentorship within a university-wide initiative.',
   ],
-  status: 'Final report in preparation',
 };
 
 export const experience = [
@@ -88,21 +86,23 @@ export const experience = [
     group: 'Work',
     entries: [
       {
-        title: 'Prevention Navigator, Project ACCESS',
+        title: 'Senior Research Aide (Prevention Navigator)',
         tag: 'Current',
         meta: [
-          'Research Foundation for SUNY · Center for Behavioral Health Promotion and Applied Research (CBHPAR), School of Education, University at Albany',
+          'Project ACCESS · Research Foundation for SUNY · Center for Behavioral Health Promotion and Applied Research (CBHPAR), School of Education, University at Albany',
           'August 2026 – Present · Part-time · Albany, NY',
         ],
         lede:
           "Project ACCESS (Achieving College Completion through Engaged Support Services) is a SAMHSA-funded initiative of UAlbany's Center for Behavioral Health Promotion and Applied Research, which develops and evaluates evidence-based programs for the health and well-being of adolescents, emerging adults, and college students. The project works to improve students' health, well-being, and academic success by making prevention, support, and care easier to reach.",
+        link: {
+          href: 'https://www.albany.edu/education/research/behavioral-health-promotion#tab-project-access',
+          label: 'About Project ACCESS',
+        },
         bullets: [
-          'Trained in C.A.R.E.S. (Community Awareness in Resource Engagement & Suicide Prevention) for recognizing signs of distress and suicide risk and connecting students to appropriate campus and community resources.',
-          'Provide one-on-one well-being appointments to all undergraduate and graduate students, using Motivational Interviewing (MI) within the SBIRT (Screening, Brief Intervention, and Referral to Treatment) framework.',
-          "In an appointment, have non-judgmental peer-to-peer conversations about mental health, sexual health, alcohol and cannabis use, other substance use, nicotine and gambling, and other aspects of students' health and well-being.",
-          "Connect students with on-campus and off-campus resources, such as counseling, health services, and community agencies, based on each student's needs and circumstances.",
-          'Facilitate workshops, tabling, and outreach events across the UAlbany campus.',
-          'Maintain documentation to support program evaluation and research.',
+          'Trained in Motivational Interviewing (MI), Screening, Brief Intervention, and Referral to Treatment (SBIRT) framework, and C.A.R.E.S. (Community Awareness in Resource Engagement & Suicide Prevention) for recognizing signs of distress and suicide risk and connecting students to appropriate campus and community resources.',
+          'Provide one-on-one well-being appointments to all undergraduate and graduate students using MI within the SBIRT framework to discuss screening results and well-being topics the student identifies.',
+          'Have non-judgmental peer-to-peer conversations about sexual health and STIs; substance use (alcohol, cannabis, other drugs, nicotine, and tobacco); gambling; mental health; and sense of belonging at UAlbany.',
+          "Connect students with on- and off-campus resources based on each student's needs and circumstances.",
         ],
       },
       {
@@ -118,10 +118,12 @@ export const experience = [
         title: 'Assistant Speech Therapist',
         meta: ['Ashoka Multispecialty Rehabilitation Center, Hyderabad, India · February 2023 – September 2024'],
         bullets: [
-          'Provided therapy to children aged 0–18 with speech, language, and communication disorders and behavioral and emotional challenges, including autism spectrum disorder, ADHD, cerebral palsy, Down syndrome, learning disorders, and intellectual disabilities.',
-          'Conducted standardized assessments, designed intervention plans under speech-language pathologist supervision, and adjusted interventions based on outcome data.',
-          'Delivered psychoeducation and parent training to support skill generalization at home and in the clinic.',
-          'Promoted to Head of the Department, supervising interns and therapists.',
+          'Managed a daily caseload of 9 to 12 clients aged 18 months to 18 years, providing 40-minute intervention sessions.',
+          'Conducted standardized assessments and maintained monthly progress reports for each client.',
+          'Designed intervention plans under speech-language pathologist supervision, tracked treatment goals using data sheets, and adjusted interventions based on outcome data.',
+          'Provided therapy to children with speech, language, and communication disorders, as well as behavioral and emotional challenges, including Autism Spectrum Disorder, Attention Deficit Hyperactivity Disorder, Cerebral Palsy, Down Syndrome, Learning Disorders, and Intellectual Disabilities.',
+          'Delivered psychoeducation and parent training to facilitate skill generalization and behavioral management in both home and clinical environments.',
+          'Promoted to Head of the Department, supervising interns and therapists within the team.',
         ],
       },
       {
@@ -153,15 +155,18 @@ export const experience = [
         title: 'Department of Clinical Psychology, ASHA Hospital',
         meta: ['Hyderabad, India · September 2022 – October 2022'],
         bullets: [
-          'Participated in case discussions across diverse mental health conditions, with applied exposure to case history taking, mental status examination, and psychological assessment.',
+          'Participated in case discussions involving diverse mental health conditions and gained applied exposure to case history taking, mental status examination (MSE), and psychological assessment procedures.',
         ],
       },
       {
         title: 'NIEPID',
-        meta: ['National Institute for the Empowerment of Persons with Intellectual Disabilities, Hyderabad, India · May 2022 – June 2022'],
+        meta: [
+          'National Institute for The Empowerment of Persons with Intellectual Disabilities, Hyderabad, India · May 2022 – June 2022',
+          'Departments of Rehabilitation Psychology, Special Education, and Physiotherapy',
+        ],
         bullets: [
-          'Rotated through Rehabilitation Psychology, Special Education, and Physiotherapy.',
-          'Participated in supervised assessments, case history taking, and psychological report writing for individuals with intellectual and developmental disabilities.',
+          'Participated in structured assessment processes for individuals with intellectual and developmental disabilities under supervision.',
+          'Gained exposure to case history taking, administering assessments, and psychological report making under supervision.',
         ],
       },
     ],
@@ -200,7 +205,7 @@ export const experience = [
 export const education = [
   {
     degree: 'Master of Science, Educational Psychology and Methodology',
-    meta: 'University at Albany, State University of New York · Expected December 2026',
+    meta: 'University at Albany, State University of New York · Expected May 2027',
     detail: 'GPA 4.00',
   },
   {
@@ -235,7 +240,7 @@ const work = (title) => experience.flatMap((g) => g.entries).find((e) => e.title
 // (a milestone path); `group` starts a new chapter with that label.
 export const timeline = [
   { id: 'ualbany', group: 'At UAlbany', focus: '/ualbany', item: education[0] },
-  { id: 'project-access', focus: '/project-access', item: work('Prevention Navigator, Project ACCESS') },
+  { id: 'project-access', focus: '/project-access', item: work('Senior Research Aide (Prevention Navigator)') },
   { id: 'ai-society', focus: '/ai-society', item: fellowship },
   { id: 'meta-analysis', focus: '/research', item: research.projects[0] },
   { id: 'speech-therapy', group: 'Work in India', focus: '/speech-therapy', item: work('Assistant Speech Therapist') },

@@ -3,7 +3,7 @@ import Skills from '../pages/Skills.jsx';
 import Contact from '../pages/Contact.jsx';
 
 // One timeline card, for a degree (from `education`), a role (from `experience`) or a
-// project (from `research`): they share title, meta, tag, summary, bullets and status.
+// project (from `research`): they share title, meta, tag, summary, link, bullets and status.
 function Entry({ item }) {
   const meta = [].concat(item.meta);
   const summary = item.lede || item.summary || item.detail;
@@ -17,6 +17,11 @@ function Entry({ item }) {
         {meta.map((line, i) => <span key={line}>{i > 0 && <br />}{line}</span>)}
       </p>
       {summary && <p className={item.lede ? 'lede' : undefined}>{summary}</p>}
+      {item.link && (
+        <p className="card-link">
+          <a href={item.link.href} target="_blank" rel="noopener noreferrer">{item.link.label} ↗</a>
+        </p>
+      )}
       {item.bullets && (
         <ul>
           {item.bullets.map((b) => <li key={b}>{b}</li>)}

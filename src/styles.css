@@ -210,6 +210,9 @@ a:focus-visible, button:focus-visible {
 }
 .tl-card { background: rgba(251, 247, 246, 0.92); }
 .tl-card .lede { font-style: italic; color: var(--text-card-2); }
+.card-link { margin: -4px 0 14px; font-size: 14px; font-weight: 600; }
+.card-link a { color: var(--lav-strong); text-decoration: underline; text-underline-offset: 3px; }
+.card-link a:hover { color: var(--lav); }
 /* computers: a column on the right with a line running through the dots of each entry */
 @media (min-aspect-ratio: 1/1) {
   .tl-list { margin-left: 52vw; width: min(560px, 42vw); border-left: 2px solid rgba(255, 255, 255, 0.6); }
