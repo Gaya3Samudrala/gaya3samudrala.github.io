@@ -35,9 +35,10 @@ own address, such as `/ualbany`, which opens the page at that entry.
   change `SEED` at the top of `src/components/Stage.jsx` for a different scatter. On computers
   the scatter is worked out for one window size (`LAYOUT_SIZE`) and scaled to fit, so it looks
   the same on every screen.
-- **Replace the home-screen illustration or add its video:** save the image as
-  `public/images/about-me.jpg` (16:9, plain lavender background, the same color as `--bg` in
-  `src/styles.css`). For an animated version, add an MP4 to `public/images/` and set
+- **Replace the home-screen illustration or add its video:** the page shows
+  `public/images/about-me-cutout.png` (16:9, see-through background, so the page color `--bg`
+  in `src/styles.css` shows around her). `public/images/about-me.jpg` is the same picture on
+  its original plain background; the sticker layout reads her outline from it, so replace both. For an animated version, add an MP4 to `public/images/` and set
   `aboutArt.videos.wide` in `src/data/content.js`. Her size on computers is `IMAGE_HEIGHT` in
   `Stage.jsx` and in `.about-hero-media` in `src/styles.css`.
 - **Edit the intro under the title:** change `profile.intro` in `src/data/content.js`.

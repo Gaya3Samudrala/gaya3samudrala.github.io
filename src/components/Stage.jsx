@@ -192,6 +192,9 @@ function layout(w, h, mask, textTop) {
 // at the end ("end") it zooms back out, with the picture softly blurred behind the text.
 export default function Stage({ mode, focus, onSelect }) {
   const { wide: image, videos } = profile.aboutArt;
+  // she's shown cut out (`cutout`) over the page colour; her outline for placing the
+  // stickers is still read from the original picture (`wide`), so the layout stays the same
+  const { cutout } = profile.aboutArt;
   const reduceMotion = useMedia('(prefers-reduced-motion: reduce)');
   const alt = `3D illustration of ${profile.name.split(' ')[0]}, smiling`;
   const [w, h] = useWindowSize();
@@ -222,10 +225,10 @@ export default function Stage({ mode, focus, onSelect }) {
     <div className={`stage stage-${mode}`}>
       <div className="camera" style={{ transform: camera }}>
         {videos.wide && !reduceMotion ? (
-          <video className="about-hero-media" src={src(videos.wide)} poster={src(image)}
+          <video className="about-hero-media" src={src(videos.wide)} poster={src(cutout)}
             autoPlay muted loop playsInline aria-label={alt} />
         ) : (
-          <img className="about-hero-media" src={src(image)} alt={alt} />
+          <img className="about-hero-media" src={src(cutout)} alt={alt} />
         )}
         {spots && (
           <nav className="stickers" aria-label="Milestones">

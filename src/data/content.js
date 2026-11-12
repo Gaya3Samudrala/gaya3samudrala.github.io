@@ -4,10 +4,12 @@
 export const profile = {
   name: 'Gayathri Gupta Samudrala',
   initials: 'GS',
-  // The full-screen character on the home page. `videos.wide` holds the animated
-  // version (leave it null to show the still image); the still also shows while it loads.
+  // The full-screen character on the home page: `cutout` is what's shown (her picture with
+  // a see-through background), `wide` the original picture the sticker layout is read from.
+  // `videos.wide` holds the animated version (leave it null to show the still image).
   aboutArt: {
     wide: 'images/about-me.jpg',
+    cutout: 'images/about-me-cutout.png',
     videos: {
       wide: null,
     },
