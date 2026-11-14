@@ -233,7 +233,7 @@ export const milestones = [
   { path: '/osmania', label: 'Osmania University', sticker: 'stickers/osmania.png', ratio: 700 / 304, lift: 0.12 },
   { path: '/project-access', label: 'Project ACCESS', sticker: 'stickers/project-access-vinyl.png', ratio: 1 },
   { path: '/speech-therapy', label: 'Speech therapy', sticker: 'stickers/speech-blocks.png', ratio: 700 / 402 },
-  { path: '/research', label: 'Research', sticker: 'stickers/research.png', ratio: 501 / 700, shift: [0.05, 0.07] },
+  { path: '/research', label: 'Research', sticker: 'stickers/research-solid.png', ratio: 501 / 700, shift: [0.05, 0.07] },
   { path: '/ai-society', label: 'AI & Society College fellowship', sticker: 'stickers/ai-society.png', ratio: 700 / 583 },
   { path: '/asha-hospital', label: 'ASHA Hospital', sticker: 'stickers/asha.png', ratio: 642 / 700 },
   { path: '/niepid', label: 'NIEPID', sticker: 'stickers/niepid.png', ratio: 471 / 700 },
